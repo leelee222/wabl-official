@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7fafc;
+  --foreground: #0f172a;
+  --primary: #1a365d;
+  --secondary: #d4af37;
+  --accent: #e85d04;
+  --neutral: #f7fafc;
+  --dark: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --card: #ffffff;
+  --popover: #ffffff;
+  --primary-foreground: #ffffff;
+  --secondary-foreground: #0f172a;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --ring: #1a365d;
+}
+
+@theme inline {
+  /* WABL Color Palette */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-neutral: var(--neutral);
+  --color-dark: var(--dark);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-popover: var(--popover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-ring: var(--ring);
+  
+  /* Typography - Inter font family */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, 'Liberation Mono', Monaco, 'Courier New', monospace;
+  
+  /* Spacing scale optimized for basketball content */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Border radius */
+  --radius: 0.5rem;
+  --radius-sm: 0.25rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f7fafc;
+    --card: #1e293b;
+    --popover: #1e293b;
+    --border: #334155;
+    --muted: #64748b;
+    --ring: #d4af37;
+  }
+}
+
+/* Dark mode when explicitly set */
+.dark {
+  --background: #0f172a;
+  --foreground: #f7fafc;
+  --card: #1e293b;
+  --popover: #1e293b;
+  --border: #334155;
+  --muted: #64748b;
+  --ring: #d4af37;
+  --primary-foreground: #ffffff;
+  --secondary-foreground: #0f172a;
+  --accent-foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+  orphans: 2;
+  widows: 2;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.card-title {
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.card-description {
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+}
+
+.text-balance {
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.no-break {
+  white-space: nowrap;
+}
+
+.optimal-text {
+  text-wrap: balance;
+  word-spacing: 0.1em;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  h1, h2, h3, h4, h5, h6, p {
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+  
+  .optimal-text {
+    word-spacing: normal;
+    letter-spacing: normal;
+    line-height: 1.6;
+  }
+
+  .card-title {
+    word-break: normal;
+    overflow-wrap: anywhere;
+    hyphens: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neutral);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+* {
+  transition: colors 300ms ease, background-color 300ms ease, border-color 300ms ease, transform 300ms ease;
+}
+
+.team-colors {
+  background: linear-gradient(135deg, var(--team-primary), var(--team-secondary));
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+.glass-effect {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes countUp {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+.animate-count-up {
+  animation: countUp 0.8s ease-out;
+}
