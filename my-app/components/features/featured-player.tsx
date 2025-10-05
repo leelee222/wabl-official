@@ -117,7 +117,7 @@ export function FeaturedPlayer({ player, team, className }: FeaturedPlayerProps)
         </div>
 
         <div className="mb-8">
-          <p className="text-base text-muted-foreground leading-relaxed text-center optimal-text break-words">
+          <p className="text-base text-muted-foreground leading-relaxed text-center break-words hyphens-auto" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
             {player.bio}
           </p>
         </div>
