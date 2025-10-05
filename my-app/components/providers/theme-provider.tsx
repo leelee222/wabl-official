@@ -12,9 +12,11 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     <NextThemesProvider
       attribute="class"
       defaultTheme="light"
-      enableSystem={true}
+      enableSystem={false}
       storageKey="wabl-theme"
-      themes={['light', 'dark', 'system']}
+      themes={['light', 'dark']}
+      forcedTheme={undefined}
+      disableTransitionOnChange={false}
     >
       {children}
     </NextThemesProvider>

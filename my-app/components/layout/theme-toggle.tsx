@@ -7,7 +7,7 @@ import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 
 export function ThemeToggle() {
-  const { setTheme, resolvedTheme } = useTheme()
+  const { setTheme, theme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
@@ -25,15 +25,20 @@ export function ThemeToggle() {
 
   const isDark = resolvedTheme === 'dark'
 
+  const toggleTheme = () => {
+    const newTheme = isDark ? "light" : "dark"
+    setTheme(newTheme)
+    console.log(`Current theme: ${theme}, Resolved: ${resolvedTheme}, Switching to: ${newTheme}`)
+    setTimeout(() => {
+      document.documentElement.classList.toggle('dark', newTheme === 'dark')
+    }, 10)
+  }
+
   return (
     <Button
       variant="ghost"
       size="icon"
-      onClick={() => {
-        const newTheme = isDark ? "light" : "dark"
-        setTheme(newTheme)
-        console.log(`Switched to ${newTheme} theme`)
-      }}
+      onClick={toggleTheme}
       className="w-9 h-9 hover:bg-primary/10 transition-all duration-300 relative overflow-hidden"
       title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >
