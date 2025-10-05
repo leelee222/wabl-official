@@ -1,0 +1,210 @@
+[
+  {
+    "id": "lagos-lions",
+    "name": "Lagos Lions",
+    "city": "Lagos",
+    "country": "Nigeria",
+    "founded": 2018,
+    "logo": "/images/teams/ll.png",
+    "colors": {
+      "primary": "#D4AF37",
+      "secondary": "#1A365D"
+    },
+    "stadium": "Teslim Balogun Stadium",
+    "capacity": 24000,
+    "coach": "Olumide Oyedeji",
+    "championships": 2,
+    "stats": {
+      "wins": 18,
+      "losses": 6,
+      "points_for": 2145,
+      "points_against": 1987,
+      "streak": 3,
+      "streak_type": "W",
+      "home_record": "10-2",
+      "away_record": "8-4"
+    }
+  },
+  {
+    "id": "dakar-sharks",
+    "name": "Dakar Sharks",
+    "city": "Dakar",
+    "country": "Senegal",
+    "founded": 2017,
+    "logo": "/images/teams/ds.png",
+    "colors": {
+      "primary": "#0047AB",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Dakar Arena",
+    "capacity": 15000,
+    "coach": "Makhtar N'Diaye",
+    "championships": 1,
+    "stats": {
+      "wins": 17,
+      "losses": 7,
+      "points_for": 2098,
+      "points_against": 2012,
+      "streak": 2,
+      "streak_type": "W",
+      "home_record": "11-1",
+      "away_record": "6-6"
+    }
+  },
+  {
+    "id": "accra-panthers",
+    "name": "Accra Panthers",
+    "city": "Accra",
+    "country": "Ghana",
+    "founded": 2019,
+    "logo": "/images/teams/ap.png",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#D4AF37"
+    },
+    "stadium": "Accra Sports Stadium",
+    "capacity": 40000,
+    "coach": "Ben Agyapong",
+    "championships": 0,
+    "stats": {
+      "wins": 15,
+      "losses": 9,
+      "points_for": 2034,
+      "points_against": 2045,
+      "streak": 1,
+      "streak_type": "L",
+      "home_record": "9-3",
+      "away_record": "6-6"
+    }
+  },
+  {
+    "id": "abidjan-thunder",
+    "name": "Abidjan Thunder",
+    "city": "Abidjan",
+    "country": "Côte d'Ivoire",
+    "founded": 2018,
+    "logo": "/images/teams/at.png",
+    "colors": {
+      "primary": "#E85D04",
+      "secondary": "#2D6A4F"
+    },
+    "stadium": "Palais des Sports",
+    "capacity": 5000,
+    "coach": "Jean-Jacques Kodjo",
+    "championships": 1,
+    "stats": {
+      "wins": 14,
+      "losses": 10,
+      "points_for": 1998,
+      "points_against": 2021,
+      "streak": 2,
+      "streak_type": "W",
+      "home_record": "8-4",
+      "away_record": "6-6"
+    }
+  },
+  {
+    "id": "bamako-warriors",
+    "name": "Bamako Warriors",
+    "city": "Bamako",
+    "country": "Mali",
+    "founded": 2020,
+    "logo": "/images/teams/bw.png",
+    "colors": {
+      "primary": "#DC2626",
+      "secondary": "#FCD34D"
+    },
+    "stadium": "Stade Modibo Keïta",
+    "capacity": 35000,
+    "coach": "Amadou Diarra",
+    "championships": 0,
+    "stats": {
+      "wins": 12,
+      "losses": 12,
+      "points_for": 1956,
+      "points_against": 1987,
+      "streak": 1,
+      "streak_type": "W",
+      "home_record": "7-5",
+      "away_record": "5-7"
+    }
+  },
+  {
+    "id": "cotonou-titans",
+    "name": "Cotonou Titans",
+    "city": "Cotonou",
+    "country": "Benin",
+    "founded": 2019,
+    "logo": "/images/teams/ct.png",
+    "colors": {
+      "primary": "#16A34A",
+      "secondary": "#DC2626"
+    },
+    "stadium": "Stade de l'Amitié",
+    "capacity": 20000,
+    "coach": "Marcel Hounsou",
+    "championships": 0,
+    "stats": {
+      "wins": 10,
+      "losses": 14,
+      "points_for": 1934,
+      "points_against": 2078,
+      "streak": 3,
+      "streak_type": "L",
+      "home_record": "6-6",
+      "away_record": "4-8"
+    }
+  },
+  {
+    "id": "ouagadougou-eagles",
+    "name": "Ouagadougou Eagles",
+    "city": "Ouagadougou",
+    "country": "Burkina Faso",
+    "founded": 2020,
+    "logo": "/images/teams/oe.png",
+    "colors": {
+      "primary": "#DC2626",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Stade du 4-Août",
+    "capacity": 35000,
+    "coach": "Issouf Sanou",
+    "championships": 0,
+    "stats": {
+      "wins": 8,
+      "losses": 16,
+      "points_for": 1876,
+      "points_against": 2134,
+      "streak": 2,
+      "streak_type": "L",
+      "home_record": "5-7",
+      "away_record": "3-9"
+    }
+  },
+  {
+    "id": "lome-storm",
+    "name": "Lomé Storm",
+    "city": "Lomé",
+    "country": "Togo",
+    "founded": 2019,
+    "logo": "/images/teams/ls.png",
+    "colors": {
+      "primary": "#FCD34D",
+      "secondary": "#16A34A"
+    },
+    "stadium": "Stade de Kégué",
+    "capacity": 30000,
+    "coach": "Kofi Agbeko",
+    "championships": 0,
+    "stats": {
+      "wins": 6,
+      "losses": 18,
+      "points_for": 1823,
+      "points_against": 2189,
+      "streak": 5,
+      "streak_type": "L",
+      "home_record": "4-8",
+      "away_record": "2-10"
+    }
+  }
+]

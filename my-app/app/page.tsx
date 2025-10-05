@@ -1,9 +1,18 @@
-import { Trophy, Users, Calendar, TrendingUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { getTeams, getRecentMatches, getUpcomingMatches, getTopScorers } from "@/lib/utils/data"
+import { MatchList } from "@/components/features/match-card"
+import { StandingsPreview, QuickStats } from "@/components/features/standings-preview"
+import { FeaturedPlayer } from "@/components/features/featured-player"
+import Link from "next/link"
 
 export default function HomePage() {
+  const teams = getTeams()
+  const recentMatches = getRecentMatches(3)
+  const upcomingMatches = getUpcomingMatches(1)
+  const topScorers = getTopScorers(1)
+  const featuredPlayer = topScorers[0]
+  const featuredTeam = teams.find(team => team.id === featuredPlayer?.teamId)
+
   return (
     <div className="flex flex-col">
       <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-accent min-h-[60vh] lg:min-h-[70vh]">
@@ -18,12 +27,16 @@ export default function HomePage() {
               8 teams, 96 players, one championship dream.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-x-6 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              <Button size="xl" variant="secondary" className="text-primary w-full sm:w-auto min-w-[160px]">
-                View Teams
-              </Button>
-              <Button size="xl" variant="outline" className="text-white border-white hover:bg-white hover:text-primary w-full sm:w-auto min-w-[160px]">
-                Watch Highlights
-              </Button>
+              <Link href="/teams">
+                <Button size="xl" variant="secondary" className="text-primary w-full sm:w-auto min-w-[160px]">
+                  View Teams
+                </Button>
+              </Link>
+              <Link href="/schedule">
+                <Button size="xl" variant="outline" className="text-white border-white hover:bg-white hover:text-primary w-full sm:w-auto min-w-[160px]">
+                  View Schedule
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -31,24 +44,7 @@ export default function HomePage() {
 
       <section className="py-12 lg:py-16 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 lg:gap-8">
-            {[
-              { label: "Teams", value: "8", icon: Users, color: "text-blue-600" },
-              { label: "Players", value: "96", icon: Trophy, color: "text-green-600" },
-              { label: "Matches", value: "30", icon: Calendar, color: "text-purple-600" },
-              { label: "Countries", value: "8", icon: TrendingUp, color: "text-orange-600" },
-            ].map((stat, index) => (
-              <div key={stat.label} className="text-center animate-count-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className={`mx-auto flex h-12 w-12 lg:h-16 lg:w-16 items-center justify-center rounded-lg bg-muted/50`}>
-                  <stat.icon className={`h-6 w-6 lg:h-8 lg:w-8 ${stat.color}`} />
-                </div>
-                <div className="mt-4">
-                  <div className="text-2xl font-bold tracking-tight text-foreground lg:text-4xl">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground lg:text-base">{stat.label}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <QuickStats teams={teams} />
         </div>
       </section>
 
@@ -63,95 +59,44 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 max-w-none">
-            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105 min-w-0">
-              <CardHeader className="pb-4">
-                <div className="flex items-center justify-between mb-2">
-                  <Badge variant="success">Final</Badge>
-                  <span className="text-sm text-muted-foreground whitespace-nowrap">Yesterday</span>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
+              <h3 className="text-xl font-bold mb-6">Recent Matches</h3>
+              <MatchList matches={recentMatches} teams={teams} title="" />
+              
+              {upcomingMatches.length > 0 && (
+                <div className="mt-8">
+                  <h3 className="text-xl font-bold mb-6">Next Up</h3>
+                  <MatchList matches={upcomingMatches} teams={teams} title="" />
                 </div>
-                <CardTitle className="text-lg sm:text-xl leading-tight">
-                  Lagos Lions vs Dakar Sharks
-                </CardTitle>
-                <CardDescription className="text-sm sm:text-base leading-relaxed">
-                  Lagos defeated Dakar in a thrilling overtime finish
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between text-2xl sm:text-3xl font-bold mb-4">
-                  <span className="text-primary">95</span>
-                  <span className="text-sm text-muted-foreground">-</span>
-                  <span className="text-muted-foreground">92</span>
-                </div>
-                <Button variant="outline" className="w-full">
-                  View Match Details
-                </Button>
-              </CardContent>
-            </Card>
+              )}
+            </div>
 
-            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105 min-w-0">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-lg sm:text-xl leading-tight">
-                  League Standings
-                </CardTitle>
-                <CardDescription className="text-sm sm:text-base">
-                  Current season rankings
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {[
-                    { team: "Lagos Lions", record: "8-2", streak: "W3" },
-                    { team: "Accra Panthers", record: "7-3", streak: "W1" },
-                    { team: "Dakar Sharks", record: "6-4", streak: "L1" },
-                  ].map((team, index) => (
-                    <div key={team.team} className="flex items-center justify-between py-2 border-b border-border last:border-0">
-                      <div className="flex items-center space-x-3 min-w-0 flex-1">
-                        <span className="w-6 text-sm text-muted-foreground font-medium flex-shrink-0">{index + 1}</span>
-                        <span className="text-sm font-medium truncate">{team.team}</span>
-                      </div>
-                      <div className="flex items-center space-x-2 flex-shrink-0">
-                        <span className="text-sm font-mono">{team.record}</span>
-                        <Badge variant={team.streak.startsWith('W') ? 'success' : 'destructive'} className="text-xs">
-                          {team.streak}
-                        </Badge>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <Button variant="outline" className="w-full mt-4">
-                  View Full Standings
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105 min-w-0">
-              <CardHeader className="pb-4">
-                <div className="flex items-center justify-between mb-2">
-                  <Badge variant="info">Upcoming</Badge>
-                  <span className="text-sm text-muted-foreground whitespace-nowrap">Tomorrow</span>
-                </div>
-                <CardTitle className="text-lg sm:text-xl leading-tight">
-                  Abidjan Thunder vs Bamako Warriors
-                </CardTitle>
-                <CardDescription className="text-sm sm:text-base leading-relaxed">
-                  7:30 PM WAT • Félix Houphouët-Boigny Stadium
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center">
-                  <div className="text-lg font-semibold text-muted-foreground mb-4">
-                    VS
-                  </div>
-                  <Button variant="wabl" className="w-full">
-                    Get Tickets
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            <div>
+              <StandingsPreview teams={teams} limit={8} />
+            </div>
           </div>
         </div>
       </section>
+
+      {featuredPlayer && featuredTeam && (
+        <section className="py-12 lg:py-16 bg-background">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto text-center mb-12">
+              <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl mb-4">
+                Player Spotlight
+              </h2>
+              <p className="text-base text-muted-foreground sm:text-lg mx-auto optimal-text" style={{ maxWidth: '600px' }}>
+                Meet the top performers lighting up the WABL
+              </p>
+            </div>
+            
+            <div className="max-w-4xl mx-auto">
+              <FeaturedPlayer player={featuredPlayer} team={featuredTeam} />
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="bg-primary py-12 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -162,6 +107,18 @@ export default function HomePage() {
             <p className="text-base text-white/90 sm:text-lg mx-auto mb-8 optimal-text" style={{ maxWidth: '700px' }}>
               Follow your favorite teams, get match notifications, and be part of the West African basketball revolution.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/teams">
+                <Button size="lg" variant="secondary" className="text-primary">
+                  Explore Teams
+                </Button>
+              </Link>
+              <Link href="/standings">
+                <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary">
+                  View Standings
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

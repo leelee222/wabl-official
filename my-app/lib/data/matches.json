@@ -1,0 +1,242 @@
+[
+  {
+    "id": "match-001",
+    "homeTeamId": "lagos-lions",
+    "awayTeamId": "dakar-sharks",
+    "date": "2025-09-15T19:00:00Z",
+    "venue": "Teslim Balogun Stadium",
+    "status": "completed",
+    "round": 1,
+    "score": {
+      "home": 98,
+      "away": 92,
+      "quarters": [24, 26, 22, 26]
+    },
+    "attendance": 18500
+  },
+  {
+    "id": "match-002",
+    "homeTeamId": "accra-panthers",
+    "awayTeamId": "abidjan-thunder",
+    "date": "2025-09-15T20:00:00Z",
+    "venue": "Accra Sports Stadium",
+    "status": "completed",
+    "round": 1,
+    "score": {
+      "home": 89,
+      "away": 87,
+      "quarters": [22, 21, 24, 22]
+    },
+    "attendance": 12300
+  },
+  {
+    "id": "match-003",
+    "homeTeamId": "bamako-warriors",
+    "awayTeamId": "cotonou-titans",
+    "date": "2025-09-16T18:30:00Z",
+    "venue": "Stade Modibo Keïta",
+    "status": "completed",
+    "round": 1,
+    "score": {
+      "home": 95,
+      "away": 88,
+      "quarters": [25, 22, 26, 22]
+    },
+    "attendance": 8200
+  },
+  {
+    "id": "match-004",
+    "homeTeamId": "ouagadougou-eagles",
+    "awayTeamId": "lome-storm",
+    "date": "2025-09-16T19:00:00Z",
+    "venue": "Stade du 4-Août",
+    "status": "completed",
+    "round": 1,
+    "score": {
+      "home": 84,
+      "away": 91,
+      "quarters": [19, 23, 21, 21]
+    },
+    "attendance": 6800
+  },
+  {
+    "id": "match-005",
+    "homeTeamId": "dakar-sharks",
+    "awayTeamId": "accra-panthers",
+    "date": "2025-09-22T19:00:00Z",
+    "venue": "Dakar Arena",
+    "status": "completed",
+    "round": 2,
+    "score": {
+      "home": 102,
+      "away": 96,
+      "quarters": [26, 25, 28, 23]
+    },
+    "attendance": 14200
+  },
+  {
+    "id": "match-006",
+    "homeTeamId": "abidjan-thunder",
+    "awayTeamId": "lagos-lions",
+    "date": "2025-09-22T20:00:00Z",
+    "venue": "Palais des Sports",
+    "status": "completed",
+    "round": 2,
+    "score": {
+      "home": 85,
+      "away": 94,
+      "quarters": [21, 22, 20, 22]
+    },
+    "attendance": 4800
+  },
+  {
+    "id": "match-007",
+    "homeTeamId": "cotonou-titans",
+    "awayTeamId": "ouagadougou-eagles",
+    "date": "2025-09-23T18:00:00Z",
+    "venue": "Stade de l'Amitié",
+    "status": "completed",
+    "round": 2,
+    "score": {
+      "home": 78,
+      "away": 82,
+      "quarters": [18, 21, 19, 20]
+    },
+    "attendance": 5600
+  },
+  {
+    "id": "match-008",
+    "homeTeamId": "lome-storm",
+    "awayTeamId": "bamako-warriors",
+    "date": "2025-09-23T19:00:00Z",
+    "venue": "Stade de Kégué",
+    "status": "completed",
+    "round": 2,
+    "score": {
+      "home": 76,
+      "away": 88,
+      "quarters": [17, 20, 19, 20]
+    },
+    "attendance": 7100
+  },
+  {
+    "id": "match-009",
+    "homeTeamId": "lagos-lions",
+    "awayTeamId": "accra-panthers",
+    "date": "2025-09-29T19:30:00Z",
+    "venue": "Teslim Balogun Stadium",
+    "status": "completed",
+    "round": 3,
+    "score": {
+      "home": 105,
+      "away": 99,
+      "quarters": [28, 24, 27, 26]
+    },
+    "attendance": 21000
+  },
+  {
+    "id": "match-010",
+    "homeTeamId": "dakar-sharks",
+    "awayTeamId": "cotonou-titans",
+    "date": "2025-09-29T20:00:00Z",
+    "venue": "Dakar Arena",
+    "status": "completed",
+    "round": 3,
+    "score": {
+      "home": 97,
+      "away": 81,
+      "quarters": [25, 22, 28, 22]
+    },
+    "attendance": 13800
+  },
+  {
+    "id": "match-011",
+    "homeTeamId": "bamako-warriors",
+    "awayTeamId": "abidjan-thunder",
+    "date": "2025-09-30T18:00:00Z",
+    "venue": "Stade Modibo Keïta",
+    "status": "completed",
+    "round": 3,
+    "score": {
+      "home": 86,
+      "away": 92,
+      "quarters": [20, 23, 22, 21]
+    },
+    "attendance": 9200
+  },
+  {
+    "id": "match-012",
+    "homeTeamId": "ouagadougou-eagles",
+    "awayTeamId": "lome-storm",
+    "date": "2025-09-30T19:00:00Z",
+    "venue": "Stade du 4-Août",
+    "status": "completed",
+    "round": 3,
+    "score": {
+      "home": 79,
+      "away": 83,
+      "quarters": [18, 21, 20, 20]
+    },
+    "attendance": 5900
+  },
+  {
+    "id": "match-013",
+    "homeTeamId": "accra-panthers",
+    "awayTeamId": "dakar-sharks",
+    "date": "2025-10-06T19:00:00Z",
+    "venue": "Accra Sports Stadium",
+    "status": "completed",
+    "round": 4,
+    "score": {
+      "home": 93,
+      "away": 98,
+      "quarters": [24, 22, 23, 24]
+    },
+    "attendance": 15400
+  },
+  {
+    "id": "match-014",
+    "homeTeamId": "lagos-lions",
+    "awayTeamId": "bamako-warriors",
+    "date": "2025-10-06T20:00:00Z",
+    "venue": "Teslim Balogun Stadium",
+    "status": "completed",
+    "round": 4,
+    "score": {
+      "home": 101,
+      "away": 89,
+      "quarters": [26, 24, 27, 24]
+    },
+    "attendance": 19800
+  },
+  {
+    "id": "match-015",
+    "homeTeamId": "cotonou-titans",
+    "awayTeamId": "lome-storm",
+    "date": "2025-10-07T18:30:00Z",
+    "venue": "Stade de l'Amitié",
+    "status": "completed",
+    "round": 4,
+    "score": {
+      "home": 80,
+      "away": 85,
+      "quarters": [19, 20, 21, 20]
+    },
+    "attendance": 6000
+  },
+  {
+    "id": "match-016",
+    "homeTeamId": "ouagadougou-eagles",
+    "awayTeamId": "abidjan-thunder",
+    "date": "2025-10-07T19:00:00Z",
+    "venue": "Stade du 4-Août",
+    "status": "completed",
+    "round": 4,
+    "score": {
+      "home": 82,
+      "away": 88,
+      "quarters": [20, 22, 21, 25]
+    },
+    "attendance": 7200
+  }
+]
