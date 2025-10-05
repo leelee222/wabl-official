@@ -33,7 +33,7 @@ export default function SchedulePage() {
             <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl mb-6">
               WABL Match Schedule
             </h1>
-            <p className="text-lg text-white/90 max-w-2xl mx-auto">
+            <p className="text-lg text-white/90 max-w-4xl mx-auto">
               Follow all the action from the West African Basketball League. Complete fixtures, live scores, and match results.
             </p>
           </div>
