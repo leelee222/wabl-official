@@ -21,11 +21,11 @@ export const metadata: Metadata = {
   keywords: "basketball, West Africa, WABL, sports, league, teams, players, matches, Nigeria, Ghana, Senegal",
   authors: [{ name: "WABL Organization" }],
   creator: "WABL",
-  metadataBase: new URL("https://wabl.basketball"),
+  metadataBase: new URL("https://wabl-official.vercel.app/"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://wabl.basketball",
+    url: "https://wabl-official.vercel.app/",
     title: "WABL - West African Basketball League",
     description: "Where Legends Rise - The premier basketball league in West Africa",
     siteName: "WABL",

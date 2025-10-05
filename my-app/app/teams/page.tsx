@@ -1,5 +1,29 @@
 import { getTeams, getMatches, getPlayers } from "@/lib/utils/data"
 import { TeamCard } from "@/components/features/team-card"
+import { Suspense } from "react"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Teams | WABL - West African Basketball League",
+  description: "Discover all 8 teams competing in the West African Basketball League. View team statistics, standings, and player rosters.",
+  keywords: "WABL teams, West African basketball teams, Lagos Lions, Dakar Sharks, Accra Panthers, basketball league teams",
+}
+
+function TeamsLoadingFallback() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {Array.from({ length: 8 }).map((_, i) => (
+        <div key={i} className="animate-pulse">
+          <div className="bg-muted rounded-lg p-6 h-96">
+            <div className="w-16 h-16 bg-muted-foreground/20 rounded-full mx-auto mb-4"></div>
+            <div className="h-4 bg-muted-foreground/20 rounded w-3/4 mx-auto mb-2"></div>
+            <div className="h-3 bg-muted-foreground/20 rounded w-1/2 mx-auto"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
 
 export default function TeamsPage() {
   const teams = getTeams()
@@ -80,16 +104,18 @@ export default function TeamsPage() {
 
       <section className="py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-            {sortedTeams.map((team, index) => (
-              <TeamCard 
-                key={team.id} 
-                team={team} 
-                rank={index + 1}
-                className="h-full"
-              />
-            ))}
-          </div>
+          <Suspense fallback={<TeamsLoadingFallback />}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+              {sortedTeams.map((team, index) => (
+                <TeamCard 
+                  key={team.id} 
+                  team={team} 
+                  rank={index + 1}
+                  className="h-full"
+                />
+              ))}
+            </div>
+          </Suspense>
         </div>
       </section>
 

@@ -4,6 +4,16 @@ import { MatchList } from "@/components/features/match-card"
 import { StandingsPreview, QuickStats } from "@/components/features/standings-preview"
 import { FeaturedPlayer } from "@/components/features/featured-player"
 import Link from "next/link"
+import { Suspense } from "react"
+
+function LoadingFallback() {
+  return (
+    <div className="animate-pulse">
+      <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+      <div className="h-4 bg-muted rounded w-1/2"></div>
+    </div>
+  )
+}
 
 export default function HomePage() {
   const teams = getTeams()
@@ -62,18 +72,24 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <h3 className="text-xl font-bold mb-6">Recent Matches</h3>
-              <MatchList matches={recentMatches} teams={teams} title="" />
+              <Suspense fallback={<LoadingFallback />}>
+                <MatchList matches={recentMatches} teams={teams} title="" />
+              </Suspense>
               
               {upcomingMatches.length > 0 && (
                 <div className="mt-8">
                   <h3 className="text-xl font-bold mb-6">Next Up</h3>
-                  <MatchList matches={upcomingMatches} teams={teams} title="" />
+                  <Suspense fallback={<LoadingFallback />}>
+                    <MatchList matches={upcomingMatches} teams={teams} title="" />
+                  </Suspense>
                 </div>
               )}
             </div>
 
             <div>
-              <StandingsPreview teams={teams} limit={8} />
+              <Suspense fallback={<LoadingFallback />}>
+                <StandingsPreview teams={teams} limit={8} />
+              </Suspense>
             </div>
           </div>
         </div>
@@ -92,7 +108,9 @@ export default function HomePage() {
             </div>
             
             <div className="max-w-4xl mx-auto">
-              <FeaturedPlayer player={featuredPlayer} team={featuredTeam} />
+              <Suspense fallback={<LoadingFallback />}>
+                <FeaturedPlayer player={featuredPlayer} team={featuredTeam} />
+              </Suspense>
             </div>
           </div>
         </section>
