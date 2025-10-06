@@ -39,13 +39,13 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
           <div className="mx-auto max-w-5xl text-center">
             <FloatingElement delay={0.2}>
-              <h1 className="text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+              <h1 className="text-3xl font-bold tracking-tight text-primary-foreground sm:text-5xl lg:text-6xl xl:text-7xl">
                 <span className="block">Where Legends Rise</span>
               </h1>
             </FloatingElement>
             
             <FloatingElement delay={0.4}>
-              <ParallaxText className="mt-6 text-base leading-7 text-white/90 sm:text-lg sm:leading-8 lg:text-xl lg:leading-9 max-w-4xl mx-auto text-balance">
+              <ParallaxText className="mt-6 text-base leading-7 text-primary-foreground/90 sm:text-lg sm:leading-8 lg:text-xl lg:leading-9 max-w-4xl mx-auto text-balance">
                 The premier basketball league bringing together the finest talent from across West Africa. 
                 8 teams, 96 players, one championship dream.
               </ParallaxText>
@@ -65,7 +65,7 @@ export default function HomePage() {
                 <StaggerItem>
                   <Link href="/schedule">
                     <HoverScale>
-                      <Button size="xl" variant="outline" className="text-white border-white hover:bg-white hover:text-primary w-full sm:w-auto min-w-[160px]">
+                      <Button size="xl" variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-background hover:text-primary w-full sm:w-auto min-w-[160px]">
                         View Schedule
                       </Button>
                     </HoverScale>
