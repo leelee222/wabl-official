@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -11,7 +11,7 @@ import { useSearch } from '@/lib/hooks/use-search'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export default function SearchPage() {
+function SearchPageContent() {
   const searchParams = useSearchParams()
   const initialQuery = searchParams.get('q') || ''
   const [query, setQuery] = useState(initialQuery)
@@ -253,5 +253,47 @@ export default function SearchPage() {
         </div>
       </section>
     </div>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex flex-col min-h-screen">
+        <section className="border-b bg-background/95 backdrop-blur">
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-4 mb-6">
+              <Link href="/">
+                <Button variant="ghost" size="icon">
+                  <ArrowLeft className="h-5 w-5" />
+                </Button>
+              </Link>
+              <div className="flex-1">
+                <h1 className="text-2xl font-bold">Search WABL</h1>
+                <p className="text-muted-foreground">Find teams, players, and matches</p>
+              </div>
+            </div>
+            
+            <div className="relative max-w-2xl">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Input
+                placeholder="Search teams, players, matches..."
+                className="pl-10 text-base h-12"
+                disabled
+              />
+            </div>
+          </div>
+        </section>
+        <section className="flex-1 py-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center py-12">
+              <div className="animate-pulse text-muted-foreground">Loading search...</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    }>
+      <SearchPageContent />
+    </Suspense>
   )
 }
