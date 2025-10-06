@@ -121,7 +121,7 @@ export function SearchBar() {
                     </div>
                   ) : !hasResults ? (
                     <div className="p-4 text-center text-muted-foreground">
-                      No results found for "{query}"
+                      No results found for &quot;{query}&quot;
                     </div>
                   ) : (
                     <div className="py-2">
@@ -268,7 +268,7 @@ export function SearchBar() {
                   </div>
                 ) : !hasResults ? (
                   <div className="text-center text-muted-foreground py-8">
-                    No results found for "{query}"
+                    No results found for &quot;{query}&quot;
                   </div>
                 ) : (
                   <div className="space-y-6">
@@ -420,7 +420,7 @@ export function MobileSearchBar() {
                   </div>
                 ) : !hasResults ? (
                   <div className="text-center text-muted-foreground py-8">
-                    No results found for "{query}"
+                    No results found for &quot;{query}&quot;
                   </div>
                 ) : (
                   <div className="space-y-6">
