@@ -1,5 +1,6 @@
 import { getTeams, getMatches, getPlayers } from "@/lib/utils/data"
 import { TeamCard } from "@/components/features/team-card"
+import { PageTransition, StaggerContainer, StaggerItem, RevealOnScroll } from "@/components/ui/animations"
 import { Suspense } from "react"
 import { Metadata } from "next"
 
@@ -101,36 +102,41 @@ export default function TeamsPage() {
         </div>
       </section>
 
-      <section className="py-16 lg:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Suspense fallback={<TeamsLoadingFallback />}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-              {sortedTeams.map((team, index) => (
-                <TeamCard 
-                  key={team.id} 
-                  team={team} 
-                  rank={index + 1}
-                  className="h-full"
-                />
-              ))}
-            </div>
-          </Suspense>
-        </div>
-      </section>
+      <PageTransition>
+        <section className="py-16 lg:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <Suspense fallback={<TeamsLoadingFallback />}>
+              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+                {sortedTeams.map((team, index) => (
+                  <StaggerItem key={team.id}>
+                    <TeamCard 
+                      team={team} 
+                      rank={index + 1}
+                      className="h-full"
+                    />
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+            </Suspense>
+          </div>
+        </section>
+      </PageTransition>
 
-      <section className="py-16 bg-muted/30">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-foreground mb-6">
-            2024 Inaugural Season
-          </h2>
-          <p className="text-base text-muted-foreground leading-relaxed">
-            The West African Basketball League brings together the best talent from across the region, 
-            with teams representing major cities and showcasing the incredible basketball culture of West Africa. 
-            Each team plays a full season schedule culminating in an exciting playoff tournament to crown 
-            the first-ever WABL champion.
-          </p>
-        </div>
-      </section>
+      <RevealOnScroll direction="up">
+        <section className="py-16 bg-muted/30">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-2xl font-bold text-foreground mb-6">
+              2024 Inaugural Season
+            </h2>
+            <p className="text-base text-muted-foreground leading-relaxed">
+              The West African Basketball League brings together the best talent from across the region, 
+              with teams representing major cities and showcasing the incredible basketball culture of West Africa. 
+              Each team plays a full season schedule culminating in an exciting playoff tournament to crown 
+              the first-ever WABL champion.
+            </p>
+          </div>
+        </section>
+      </RevealOnScroll>
     </div>
   )
 }

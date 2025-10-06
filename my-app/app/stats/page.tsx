@@ -30,13 +30,13 @@ export default function StatsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="bg-gradient-to-r from-primary to-accent text-white py-12">
+      <div className="bg-muted/50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4">
-            <h1 className="text-4xl lg:text-5xl font-bold">
+            <h1 className="text-4xl lg:text-5xl font-bold text-foreground">
               League Statistics
             </h1>
-            <p className="text-white/90 text-lg max-w-4xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-4xl mx-auto">
               Dive deep into the numbers that tell the story of WABL. Explore player performance, 
               team comparisons, and statistical trends that shape the league.
             </p>

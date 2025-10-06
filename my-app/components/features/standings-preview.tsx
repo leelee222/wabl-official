@@ -1,6 +1,6 @@
 'use client'
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Trophy, TrendingUp, TrendingDown } from "lucide-react"
@@ -12,9 +12,10 @@ interface StandingsPreviewProps {
   limit?: number
   showFullButton?: boolean
   className?: string
+  showTitle?: boolean
 }
 
-export function StandingsPreview({ teams, limit = 4, showFullButton = true, className }: StandingsPreviewProps) {
+export function StandingsPreview({ teams, limit = 4, showFullButton = true, className, showTitle = true }: StandingsPreviewProps) {
   const sortedTeams = teams
     .sort((a, b) => {
       if (b.stats.wins !== a.stats.wins) {
@@ -25,22 +26,23 @@ export function StandingsPreview({ teams, limit = 4, showFullButton = true, clas
     .slice(0, limit)
 
   return (
-    <Card className={`${className}`}>
-      <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-lg sm:text-xl leading-tight flex items-center">
+    <div className={`${className}`}>
+      {showTitle && (
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-xl font-bold flex items-center">
             <Trophy className="h-5 w-5 mr-2 text-primary" />
             League Standings
-          </CardTitle>
+          </h3>
           {limit < teams.length && (
             <Badge variant="outline" className="text-xs">
               Top {limit}
             </Badge>
           )}
         </div>
-      </CardHeader>
+      )}
       
-      <CardContent>
+      <Card>
+        <CardContent className="p-10">
         <div className="space-y-3">
           {sortedTeams.map((team, index) => {
             const streak = getWinStreak(team.id)
@@ -105,6 +107,7 @@ export function StandingsPreview({ teams, limit = 4, showFullButton = true, clas
         )}
       </CardContent>
     </Card>
+    </div>
   )
 }
 

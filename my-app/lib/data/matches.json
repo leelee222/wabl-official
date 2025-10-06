@@ -238,5 +238,35 @@
       "quarters": [20, 22, 21, 25]
     },
     "attendance": 7200
+  },
+  {
+    "id": "match-017",
+    "homeTeamId": "lagos-lions",
+    "awayTeamId": "accra-panthers",
+    "date": "2025-10-12T19:30:00Z",
+    "venue": "Teslim Balogun Stadium",
+    "status": "upcoming",
+    "round": 5,
+    "attendance": 8500
+  },
+  {
+    "id": "match-018",
+    "homeTeamId": "dakar-sharks",
+    "awayTeamId": "bamako-warriors",
+    "date": "2025-10-14T18:00:00Z",
+    "venue": "Dakar Arena",
+    "status": "upcoming",
+    "round": 5,
+    "attendance": 7800
+  },
+  {
+    "id": "match-019",
+    "homeTeamId": "cotonou-titans",
+    "awayTeamId": "lome-storm",
+    "date": "2025-10-16T20:00:00Z",
+    "venue": "Stade Charles de Gaulle",
+    "status": "upcoming",
+    "round": 5,
+    "attendance": 6200
   }
 ]

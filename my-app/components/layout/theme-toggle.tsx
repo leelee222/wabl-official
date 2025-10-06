@@ -7,7 +7,7 @@ import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 
 export function ThemeToggle() {
-  const { setTheme, theme, resolvedTheme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
@@ -28,10 +28,6 @@ export function ThemeToggle() {
   const toggleTheme = () => {
     const newTheme = isDark ? "light" : "dark"
     setTheme(newTheme)
-    console.log(`Current theme: ${theme}, Resolved: ${resolvedTheme}, Switching to: ${newTheme}`)
-    setTimeout(() => {
-      document.documentElement.classList.toggle('dark', newTheme === 'dark')
-    }, 10)
   }
 
   return (

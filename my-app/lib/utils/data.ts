@@ -110,7 +110,6 @@ export function getStandings(): (Team & { position: number })[] {
   const teams = getTeams()
   return teams
     .sort((a, b) => {
-      // Sort by wins (descending), then by losses (ascending)
       if (b.stats.wins !== a.stats.wins) {
         return b.stats.wins - a.stats.wins
       }

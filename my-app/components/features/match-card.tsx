@@ -135,7 +135,7 @@ export function MatchCard({ match, homeTeam, awayTeam, className }: MatchCardPro
 
         <Button 
           variant={isCompleted ? "outline" : isUpcoming ? "default" : "destructive"} 
-          className={`w-full ${isUpcoming ? 'bg-primary text-white hover:bg-primary/90' : ''}`}
+          className={`w-full`}
           size="sm"
         >
           {isCompleted && "View Box Score"}

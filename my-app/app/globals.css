@@ -1,101 +1,75 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7fafc;
-  --foreground: #0f172a;
-  --primary: #1a365d;
-  --secondary: #d4af37;
-  --accent: #e85d04;
-  --neutral: #f7fafc;
-  --dark: #0f172a;
-  --muted: #64748b;
-  --border: #e2e8f0;
-  --card: #ffffff;
-  --popover: #ffffff;
-  --primary-foreground: #ffffff;
-  --secondary-foreground: #0f172a;
-  --accent-foreground: #ffffff;
-  --destructive: #dc2626;
-  --destructive-foreground: #ffffff;
-  --ring: #1a365d;
-}
-
-@theme inline {
-  /* WABL Color Palette */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
-  --color-neutral: var(--neutral);
-  --color-dark: var(--dark);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-card: var(--card);
-  --color-popover: var(--popover);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-ring: var(--ring);
-  
-  /* Typography - Inter font family */
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, 'Liberation Mono', Monaco, 'Courier New', monospace;
-  
-  /* Spacing scale optimized for basketball content */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 3rem;
-  --spacing-3xl: 4rem;
-  
-  /* Border radius */
+  --background: 0 0% 100%; /* white */
+  --foreground: 222.2 84% 4.9%; /* dark text */
+  --primary: 221.2 83.2% 53.3%; /* #1a365d */
+  --primary-foreground: 210 40% 98%; /* white */
+  --secondary: 46 100% 52%; /* #d4af37 */
+  --secondary-foreground: 222.2 84% 4.9%; /* dark text */
+  --accent: 17 100% 74%; /* #e85d04 */
+  --accent-foreground: 210 40% 98%; /* white */
+  --muted: 210 40% 98%; /* light gray */
+  --muted-foreground: 215.4 16.3% 46.9%; /* medium gray */
+  --border: 214.3 31.8% 91.4%; /* light border */
+  --input: 214.3 31.8% 91.4%; /* input border */
+  --card: 0 0% 100%; /* white */
+  --card-foreground: 222.2 84% 4.9%; /* dark text */
+  --popover: 0 0% 100%; /* white */
+  --popover-foreground: 222.2 84% 4.9%; /* dark text */
+  --destructive: 0 84.2% 60.2%; /* red */
+  --destructive-foreground: 210 40% 98%; /* white */
+  --ring: 221.2 83.2% 53.3%; /* primary color */
   --radius: 0.5rem;
-  --radius-sm: 0.25rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f172a;
-    --foreground: #f7fafc;
-    --card: #1e293b;
-    --popover: #1e293b;
-    --border: #334155;
-    --muted: #64748b;
-    --ring: #d4af37;
+    --background: 222.2 84% 4.9%; /* dark background */
+    --foreground: 210 40% 98%; /* light text */
+    --primary: 221.2 83.2% 53.3%; /* same primary */
+    --primary-foreground: 210 40% 98%; /* white */
+    --secondary: 46 100% 52%; /* same secondary */
+    --secondary-foreground: 222.2 84% 4.9%; /* dark text */
+    --muted: 217.2 32.6% 17.5%; /* dark muted */
+    --muted-foreground: 215 20.2% 65.1%; /* light muted text */
+    --accent: 17 100% 74%; /* same accent */
+    --accent-foreground: 210 40% 98%; /* white */
+    --card: 222.2 84% 4.9%; /* dark card */
+    --card-foreground: 210 40% 98%; /* light text */
+    --popover: 222.2 84% 4.9%; /* dark popover */
+    --popover-foreground: 210 40% 98%; /* light text */
+    --border: 217.2 32.6% 17.5%; /* dark border */
+    --input: 217.2 32.6% 17.5%; /* dark input */
+    --ring: 46 100% 52%; /* secondary for ring */
   }
 }
 
 /* Dark mode when explicitly set */
 .dark {
-  --background: #0f172a;
-  --foreground: #f7fafc;
-  --card: #1e293b;
-  --popover: #1e293b;
-  --border: #334155;
-  --muted: #64748b;
-  --ring: #d4af37;
-  --primary-foreground: #ffffff;
-  --secondary-foreground: #0f172a;
-  --accent-foreground: #ffffff;
+  --background: 222.2 84% 4.9%; /* dark background */
+  --foreground: 210 40% 98%; /* light text */
+  --primary: 221.2 83.2% 53.3%; /* same primary */
+  --primary-foreground: 210 40% 98%; /* white */
+  --secondary: 46 100% 52%; /* same secondary */
+  --secondary-foreground: 222.2 84% 4.9%; /* dark text */
+  --muted: 217.2 32.6% 17.5%; /* dark muted */
+  --muted-foreground: 215 20.2% 65.1%; /* light muted text */
+  --accent: 17 100% 74%; /* same accent */
+  --accent-foreground: 210 40% 98%; /* white */
+  --card: 222.2 84% 4.9%; /* dark card */
+  --card-foreground: 210 40% 98%; /* light text */
+  --popover: 222.2 84% 4.9%; /* dark popover */
+  --popover-foreground: 210 40% 98%; /* light text */
+  --border: 217.2 32.6% 17.5%; /* dark border */
+  --input: 217.2 32.6% 17.5%; /* dark input */
+  --ring: 46 100% 52%; /* secondary for ring */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -241,6 +215,88 @@ p {
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.6);
+  }
+}
+
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes wiggle {
+  0%, 7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%, 100% {
+    transform: rotateZ(0);
+  }
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out;
 }
@@ -251,4 +307,100 @@ p {
 
 .animate-count-up {
   animation: countUp 0.8s ease-out;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up-fade {
+  animation: slide-up-fade 0.6s ease-out;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out;
+}
+
+.animate-wiggle {
+  animation: wiggle 1s ease-in-out;
+}
+
+/* Hover effects */
+.hover-glow:hover {
+  animation: pulse-glow 1s ease-in-out;
+}
+
+.hover-float:hover {
+  animation: float 3s ease-in-out infinite;
+}
+
+.hover-wiggle:hover {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+/* Interactive elements */
+.interactive-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.interactive-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.interactive-card:active {
+  transform: translateY(-4px) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+/* Gradient animations */
+.gradient-shift {
+  background: linear-gradient(-45deg, var(--primary), var(--accent), var(--secondary), var(--primary));
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Loading animations */
+.loading-dots::after {
+  content: '';
+  animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+  0%, 20% {
+    content: '.';
+  }
+  40% {
+    content: '..';
+  }
+  60%, 100% {
+    content: '...';
+  }
 }

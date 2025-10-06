@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { HoverScale } from "@/components/ui/animations"
 import { Trophy, TrendingUp, Star, MapPin } from "lucide-react"
 import { Team, Player } from "@/lib/utils/data"
 import Image from "next/image"
@@ -29,7 +30,8 @@ export function TeamCard({ team, rank, className }: TeamCardProps) {
   }
 
   return (
-    <Card className={`group hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 hover:border-primary/30 ${className}`}>
+    <HoverScale scale={1.02} tapScale={0.98}>
+      <Card className={`group hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/30 ${className}`}>
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between mb-4">
           {getRankBadge()}
@@ -44,7 +46,7 @@ export function TeamCard({ team, rank, className }: TeamCardProps) {
               src={team.logo}
               alt={`${team.name} logo`}
               fill
-              className="object-cover group-hover:scale-110 transition-transform duration-300"
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
               sizes="64px"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -112,7 +114,7 @@ export function TeamCard({ team, rank, className }: TeamCardProps) {
           <Link href={`/teams/${team.id}`} className="block">
             <Button 
               variant="outline" 
-              className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300"
+              className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 text-foreground border-border"
               size="sm"
             >
               View Team
@@ -121,6 +123,7 @@ export function TeamCard({ team, rank, className }: TeamCardProps) {
         </div>
       </CardContent>
     </Card>
+    </HoverScale>
   )
 }
 
