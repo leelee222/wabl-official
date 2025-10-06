@@ -4,10 +4,11 @@ import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { Menu, X, Search } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "./theme-toggle"
+import { SearchBar, MobileSearchBar } from "@/components/features/search-bar"
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -24,10 +25,10 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8" aria-label="Global">
-        <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center space-x-3">
-            <div className="relative w-10 h-10 lg:w-12 lg:h-12">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8 gap-4" aria-label="Global">
+        <div className="flex lg:flex-1 min-w-0 flex-shrink-0">
+          <Link href="/" className="-m-1.5 p-1.5 flex items-center space-x-2 lg:space-x-3">
+            <div className="relative w-8 h-8 lg:w-12 lg:h-12 flex-shrink-0">
               <Image
                 src="/images/logos/wabl-1.png"
                 alt="WABL Logo"
@@ -36,14 +37,15 @@ export function Header() {
                 priority
               />
             </div>
-            <div className="flex flex-col">
-              <span className="text-xl lg:text-2xl font-bold text-primary">WABL</span>
+            <div className="flex flex-col min-w-0">
+              <span className="text-lg lg:text-2xl font-bold text-primary">WABL</span>
               <span className="text-xs lg:text-sm text-muted-foreground hidden sm:block">Where Legends Rise</span>
             </div>
           </Link>
         </div>
 
-        <div className="flex lg:hidden items-center space-x-2">
+        <div className="flex lg:hidden items-center space-x-2 flex-shrink-0">
+          <SearchBar />
           <ThemeToggle />
           <Button variant="ghost" size="icon" onClick={toggleMenu}>
             <span className="sr-only">Open main menu</span>
@@ -55,13 +57,13 @@ export function Header() {
           </Button>
         </div>
 
-        <div className="hidden lg:flex lg:gap-x-8">
+        <div className="hidden lg:flex lg:gap-x-6 xl:gap-x-8 flex-shrink-0">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               className={cn(
-                "text-sm font-semibold leading-6 px-3 py-2 rounded-md transition-all duration-200 hover:text-primary hover:bg-primary/5",
+                "text-sm font-semibold leading-6 px-3 py-2 rounded-md transition-all duration-200 hover:text-primary hover:bg-primary/5 whitespace-nowrap",
                 pathname === item.href
                   ? "text-primary bg-primary/10 border-b-2 border-primary"
                   : "text-muted-foreground"
@@ -72,11 +74,8 @@ export function Header() {
           ))}
         </div>
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:space-x-4">
-          <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-            <Search className="h-5 w-5" />
-            <span className="sr-only">Search</span>
-          </Button>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:space-x-4 min-w-0">
+          <SearchBar />
           <ThemeToggle />
         </div>
       </nav>
@@ -121,11 +120,8 @@ export function Header() {
                     </Link>
                   ))}
                 </div>
-                <div className="py-6">
-                  <Button variant="outline" className="w-full justify-start" onClick={toggleMenu}>
-                    <Search className="h-4 w-4 mr-2" />
-                    Search
-                  </Button>
+                <div className="py-6 w-full">
+                  <MobileSearchBar />
                 </div>
               </div>
             </div>

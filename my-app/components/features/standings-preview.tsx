@@ -114,7 +114,7 @@ interface QuickStatsProps {
 }
 
 export function QuickStats({ teams, className }: QuickStatsProps) {
-  const totalGames = teams.reduce((sum, team) => sum + team.stats.wins + team.stats.losses, 0) / 2 // Divide by 2 since each game involves 2 teams
+  const totalGames = teams.reduce((sum, team) => sum + team.stats.wins + team.stats.losses, 0) / 2
   const avgPointsPerGame = teams.reduce((sum, team) => sum + team.stats.points_for, 0) / teams.length
   const totalAttendance = 450000
 

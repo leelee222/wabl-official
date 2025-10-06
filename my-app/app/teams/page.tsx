@@ -74,7 +74,6 @@ export default function TeamsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/20">
-      {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-gradient-to-r from-primary/10 via-primary/5 to-secondary/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">

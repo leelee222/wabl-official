@@ -7,14 +7,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Trophy, Users, MapPin, Calendar, TrendingUp, Star } from "lucide-react"
 import Image from "next/image"
 import { MatchList } from "@/components/features/match-card"
+import { use } from "react"
 
 interface TeamPageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export default function TeamPage({ params }: TeamPageProps) {
+  const resolvedParams = use(params)
   const teams = getTeams()
-  const team = teams.find(t => t.id === params.slug)
+  const team = teams.find(t => t.id === resolvedParams.slug)
   
   if (!team) {
     notFound()
@@ -133,7 +135,6 @@ export default function TeamPage({ params }: TeamPageProps) {
         </div>
       </section>
 
-      {/* Stats Dashboard */}
       <section className="py-12 lg:py-16 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-8 text-center">Team Statistics</h2>
@@ -190,12 +191,10 @@ export default function TeamPage({ params }: TeamPageProps) {
         </div>
       </section>
 
-      {/* Roster Section */}
       <section className="py-12 lg:py-16 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-8">Team Roster</h2>
           
-          {/* Top Scorers */}
           <div className="mb-8">
             <h3 className="text-lg font-semibold mb-4">Top Scorers</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -243,7 +242,6 @@ export default function TeamPage({ params }: TeamPageProps) {
             </div>
           </div>
 
-          {/* Full Roster Table */}
           <Card>
             <CardHeader>
               <CardTitle>Full Roster</CardTitle>
@@ -289,7 +287,6 @@ export default function TeamPage({ params }: TeamPageProps) {
         </div>
       </section>
 
-      {/* Recent Matches */}
       {recentMatches.length > 0 && (
         <section className="py-12 lg:py-16 bg-muted/30">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
