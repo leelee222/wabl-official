@@ -18,14 +18,14 @@
     "id": "match-002",
     "homeTeamId": "accra-panthers",
     "awayTeamId": "abidjan-thunder",
-    "date": "2025-09-15T20:00:00Z",
+    "date": "2025-10-06T20:00:00Z",
     "venue": "Accra Sports Stadium",
-    "status": "completed",
+    "status": "live",
     "round": 1,
     "score": {
-      "home": 89,
-      "away": 87,
-      "quarters": [22, 21, 24, 22]
+      "home": 64,
+      "away": 58,
+      "quarters": [22, 21, 21, 0]
     },
     "attendance": 12300
   },
@@ -48,16 +48,16 @@
     "id": "match-004",
     "homeTeamId": "ouagadougou-eagles",
     "awayTeamId": "lome-storm",
-    "date": "2025-09-16T19:00:00Z",
+    "date": "2025-10-06T19:00:00Z",
     "venue": "Stade du 4-Août",
-    "status": "completed",
+    "status": "live",
     "round": 1,
     "score": {
-      "home": 84,
-      "away": 91,
-      "quarters": [19, 23, 21, 21]
+      "home": 42,
+      "away": 45,
+      "quarters": [18, 24, 0, 0]
     },
-    "attendance": 6800
+    "attendance": 6500
   },
   {
     "id": "match-005",

@@ -1,11 +1,12 @@
 "use client"
 
+import Link from "next/link"
 import { getMatches, getTeams } from "@/lib/utils/data"
 import { MatchList } from "@/components/features/match-card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Calendar, Trophy, Filter, Download, ChevronLeft, ChevronRight } from "lucide-react"
+import { Calendar, Trophy, Filter, Download, ChevronLeft, ChevronRight, Play } from "lucide-react"
 import { useState, useMemo } from "react"
 import { format, startOfWeek, endOfWeek, eachDayOfInterval, addWeeks, subWeeks, parseISO, isSameDay } from "date-fns"
 
@@ -94,6 +95,65 @@ END:VCALENDAR`
           </div>
         </div>
       </section>
+
+      {liveMatches.length > 0 && (
+        <section className="py-8 bg-background">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+                  <h2 className="text-2xl font-bold">Live Games</h2>
+                </div>
+                <Badge variant="destructive">LIVE</Badge>
+              </div>
+              <Button asChild>
+                <Link href="/stats">View Stats Dashboard</Link>
+              </Button>
+            </div>
+            <div className="grid gap-4">
+              {liveMatches.map((match) => {
+                const homeTeam = teams.find(t => t.id === match.homeTeamId)
+                const awayTeam = teams.find(t => t.id === match.awayTeamId)
+                return (
+                  <Card key={match.id} className="overflow-hidden border-red-200 bg-red-50/30 dark:bg-red-950/30">
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-6">
+                          <div className="text-center">
+                            <div className="text-sm text-muted-foreground mb-1">{awayTeam?.city}</div>
+                            <div className="font-bold text-lg">{awayTeam?.name}</div>
+                            <div className="text-3xl font-bold text-primary">{match.score?.away || 0}</div>
+                          </div>
+                          <div className="text-2xl font-bold text-muted-foreground">VS</div>
+                          <div className="text-center">
+                            <div className="text-sm text-muted-foreground mb-1">{homeTeam?.city}</div>
+                            <div className="font-bold text-lg">{homeTeam?.name}</div>
+                            <div className="text-3xl font-bold text-primary">{match.score?.home || 0}</div>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                            <span className="text-sm font-medium text-red-600">LIVE</span>
+                          </div>
+                          <div className="text-sm text-muted-foreground mb-3">{match.venue}</div>
+                          <Button asChild>
+                            <Link href={`/live/${match.id}`}>
+                              <Play className="w-4 h-4 mr-2" />
+                              Watch Live Simulation
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="py-8 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

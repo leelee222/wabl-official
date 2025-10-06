@@ -94,7 +94,7 @@ export function TeamCard({ team, rank, className }: TeamCardProps) {
                 <span className="text-xs font-medium text-muted-foreground">TOP SCORER</span>
               </div>
               <div className="text-sm font-semibold text-foreground break-words">
-                {team.topScorer.name.split(' ').slice(-1)[0]} {/* Last name only */}
+                {team.topScorer.name.split(' ').slice(-1)[0]}
               </div>
               <div className="text-xs text-muted-foreground">
                 {team.topScorer.stats.ppg.toFixed(1)} PPG

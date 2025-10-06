@@ -15,6 +15,7 @@ const navigation = [
   { name: "Teams", href: "/teams" },
   { name: "Standings", href: "/standings" },
   { name: "Schedule", href: "/schedule" },
+  { name: "Stats", href: "/stats" },
 ]
 
 export function Header() {
