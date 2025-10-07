@@ -89,11 +89,6 @@ export default async function TeamPage({ params }: TeamPageProps) {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 5)
 
-  const upcomingMatches = teamMatches
-    .filter(match => match.status === 'upcoming')
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-    .slice(0, 5)
-
   const winPercentage = team.stats.wins + team.stats.losses > 0 
     ? ((team.stats.wins / (team.stats.wins + team.stats.losses)) * 100).toFixed(1)
     : '0.0'

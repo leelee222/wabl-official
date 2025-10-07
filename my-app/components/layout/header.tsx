@@ -8,7 +8,6 @@ import { Search } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "./theme-toggle"
-import { SearchBar } from "@/components/features/search-bar-fixed"
 
 const navigation = [
   { name: "Home", href: "/" },

@@ -154,7 +154,7 @@ export function getMatchStatus(match: Match): {
       };
     case 'upcoming':
       return {
-        status: formatTime(match.time),
+        status: match.time ? formatTime(match.time) : 'TBD',
         color: 'text-blue-600 dark:text-blue-400',
         bgColor: 'bg-blue-50 dark:bg-blue-900/20'
       };
