@@ -26,7 +26,7 @@ function LoadingFallback() {
 
 export default function HomePage() {
   const teams = getTeams()
-  const recentMatches = getRecentMatches(3)
+  const recentMatches = getRecentMatches(2)
   const upcomingMatches = getUpcomingMatches(1)
   const topScorers = getTopScorers(1)
   const featuredPlayer = topScorers[0]
@@ -118,7 +118,7 @@ export default function HomePage() {
 
               <StaggerItem className="lg:mt-0">
                 <Suspense fallback={<LoadingFallback />}>
-                  <StandingsPreview teams={teams} limit={7} showTitle={true} />
+                  <StandingsPreview teams={teams} limit={8} showTitle={true} />
                 </Suspense>
               </StaggerItem>
             </StaggerContainer>
@@ -154,33 +154,76 @@ export default function HomePage() {
       )}
 
       <RevealOnScroll direction="up" delay={0.4}>
-        <section className="bg-gradient-to-r from-primary/90 to-primary py-12 lg:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto text-center">
+        <section className="bg-gradient-to-r from-primary to-accent py-16 lg:py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute inset-0">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-secondary/20 rounded-full blur-xl" />
+            <div className="absolute bottom-10 right-10 w-40 h-40 bg-accent/20 rounded-full blur-xl" />
+          </div>
+          
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto text-center mb-12">
               <FloatingElement delay={0.5}>
-                <h2 className="text-2xl font-bold tracking-tight text-primary-foreground sm:text-3xl lg:text-4xl mb-6">
-                  Join the WABL Community
+                <h2 className="text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl lg:text-5xl mb-4">
+                  Never Miss a Game
                 </h2>
-                <p className="text-base text-primary-foreground/90 sm:text-lg mx-auto mb-8 optimal-text" style={{ maxWidth: '700px' }}>
-                  Follow your favorite teams, get match notifications, and be part of the West African basketball revolution.
+                <p className="text-lg text-primary-foreground/90 mx-auto mb-2 max-w-3xl">
+                  Get live updates, match notifications, and exclusive content from West Africa&apos;s premier basketball league.
+                </p>
+                <p className="text-sm text-primary-foreground/80 mx-auto max-w-2xl">
+                  Join 10,000+ fans already following WABL across 8 cities
                 </p>
               </FloatingElement>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <FloatingElement delay={0.6}>
+                <div className="text-center p-6 rounded-lg bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20">
+                  <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🏀</span>
+                  </div>
+                  <h3 className="font-semibold text-primary-foreground mb-2">Live Scores</h3>
+                  <p className="text-sm text-primary-foreground/80">Real-time updates from every WABL game</p>
+                </div>
+              </FloatingElement>
               
-              <StaggerContainer className="flex flex-col sm:flex-row gap-4 justify-center">
+              <FloatingElement delay={0.7}>
+                <div className="text-center p-6 rounded-lg bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20">
+                  <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">📱</span>
+                  </div>
+                  <h3 className="font-semibold text-primary-foreground mb-2">Match Alerts</h3>
+                  <p className="text-sm text-primary-foreground/80">Get notified when your team plays</p>
+                </div>
+              </FloatingElement>
+              
+              <FloatingElement delay={0.8}>
+                <div className="text-center p-6 rounded-lg bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20">
+                  <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">⭐</span>
+                  </div>
+                  <h3 className="font-semibold text-primary-foreground mb-2">Player Stats</h3>
+                  <p className="text-sm text-primary-foreground/80">Track your favorite players&apos; performance</p>
+                </div>
+              </FloatingElement>
+            </div>
+            
+            <div className="text-center">
+              <StaggerContainer className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <StaggerItem>
-                  <Link href="/teams">
+                  <Link href="/schedule">
                     <HoverScale>
-                      <Button size="lg" variant="secondary" className="text-primary bg-background hover:bg-background/90">
-                        Explore Teams
+                      <Button size="xl" variant="secondary" className="text-primary bg-primary-foreground hover:bg-primary-foreground/90 min-w-[180px]">
+                        View Live Games
                       </Button>
                     </HoverScale>
                   </Link>
                 </StaggerItem>
                 <StaggerItem>
-                  <Link href="/standings">
+                  <Link href="/stats">
                     <HoverScale>
-                      <Button size="lg" variant="outline" className="text-primary-foreground border-primary-foreground/80 bg-primary-foreground/10 hover:bg-background hover:text-primary">
-                        View Standings
+                      <Button size="xl" variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary min-w-[180px]">
+                        Player Rankings
                       </Button>
                     </HoverScale>
                   </Link>

@@ -4,8 +4,8 @@ import { Instagram, Twitter, Youtube } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-dark text-white">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <footer className="bg-muted border-t border-border">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center space-x-3 mb-4">
@@ -18,65 +18,65 @@ export function Footer() {
                 />
               </div>
               <div>
-                <span className="text-xl font-bold text-secondary">WABL</span>
-                <p className="text-xs text-white/70">Where Legends Rise</p>
+                <span className="text-xl font-bold text-primary">WABL</span>
+                <p className="text-xs text-muted-foreground">Where Legends Rise</p>
               </div>
             </Link>
-            <p className="text-sm text-white/70 text-center md:text-left max-w-l">
+            <p className="text-sm text-muted-foreground text-center md:text-left max-w-sm">
               The premier basketball league across West Africa.
             </p>
           </div>
 
           <div className="flex flex-col items-center md:items-start">
-            <h3 className="text-sm font-semibold text-white mb-4">Quick Links</h3>
+            <h3 className="text-sm font-semibold text-foreground mb-4">Quick Links</h3>
             <div className="grid grid-cols-2 gap-2 text-center md:text-left">
-              <Link href="/teams" className="text-sm text-white/70 hover:text-secondary transition-colors">
+              <Link href="/teams" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Teams
               </Link>
-              <Link href="/standings" className="text-sm text-white/70 hover:text-secondary transition-colors">
+              <Link href="/standings" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Standings
               </Link>
-              <Link href="/schedule" className="text-sm text-white/70 hover:text-secondary transition-colors">
+              <Link href="/schedule" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Schedule
               </Link>
-              <Link href="/about" className="text-sm text-white/70 hover:text-secondary transition-colors">
-                About
+              <Link href="/stats" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Stats
               </Link>
             </div>
           </div>
 
           <div className="flex flex-col items-center md:items-start">
-            <h3 className="text-sm font-semibold text-white mb-4">Follow Us</h3>
+            <h3 className="text-sm font-semibold text-foreground mb-4">Follow Us</h3>
             <div className="flex space-x-4 mb-4">
-              <Link href="#" className="text-white/70 hover:text-secondary transition-colors">
+              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
               </Link>
-              <Link href="#" className="text-white/70 hover:text-secondary transition-colors">
+              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-white/70 hover:text-secondary transition-colors">
+              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Youtube className="h-5 w-5" />
                 <span className="sr-only">YouTube</span>
               </Link>
             </div>
-            <p className="text-xs text-white/70 text-center md:text-left">
+            <p className="text-xs text-muted-foreground text-center md:text-left">
               info@wabl.basketball
             </p>
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/20">
+        <div className="mt-8 pt-6 border-t border-border">
           <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">
-            <p className="text-xs text-white/70 text-center">
+            <p className="text-xs text-muted-foreground text-center">
               © 2025 WABL. All rights reserved.
             </p>
-            <div className="flex space-x-4 text-xs text-white/70">
-              <Link href="/privacy" className="hover:text-secondary transition-colors">
+            <div className="flex space-x-4 text-xs text-muted-foreground">
+              <Link href="/privacy" className="hover:text-primary transition-colors">
                 Privacy
               </Link>
-              <Link href="/terms" className="hover:text-secondary transition-colors">
+              <Link href="/terms" className="hover:text-primary transition-colors">
                 Terms
               </Link>
             </div>

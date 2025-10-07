@@ -46,7 +46,7 @@ export function FeaturedPlayer({ player, team, className }: FeaturedPlayerProps)
     <Card className={`group hover:shadow-xl transition-all duration-500 border-2 hover:border-primary/20 w-full min-w-0 ${className}`}>
       <CardHeader className="pb-6 text-center">
         <div className="flex items-center justify-between mb-4">
-          <Badge variant="default" className="animate-pulse bg-primary text-white">
+          <Badge variant="default" className="animate-pulse bg-primary text-primary-foreground">
             <Star className="h-3 w-3 mr-1" />
             Featured Player
           </Badge>
@@ -85,7 +85,7 @@ export function FeaturedPlayer({ player, team, className }: FeaturedPlayerProps)
             </div>
           </div>
           <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-            <Star className="h-4 w-4 text-white" />
+            <Star className="h-4 w-4 text-primary-foreground" />
           </div>
         </div>
 
@@ -124,7 +124,7 @@ export function FeaturedPlayer({ player, team, className }: FeaturedPlayerProps)
 
         <div className="space-y-6">
           <Link href={`/players/${player.id}`}>
-            <Button variant="default" className="w-full group-hover:shadow-lg transition-shadow bg-primary text-white hover:bg-primary/90">
+            <Button variant="default" className="w-full group-hover:shadow-lg transition-shadow bg-primary text-primary-foreground hover:bg-primary/90">
               View Full Profile
             </Button>
           </Link>

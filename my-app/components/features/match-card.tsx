@@ -27,15 +27,15 @@ export function MatchCard({ match, homeTeam, awayTeam, className }: MatchCardPro
   }
 
   const getStatusColor = () => {
-    if (isCompleted) return 'border-green-200 dark:border-green-800'
-    if (isLive) return 'border-red-200 dark:border-red-800'
-    return 'border-blue-200 dark:border-blue-800'
+    if (isCompleted) return 'shadow-lg shadow-gray-500/20'
+    if (isLive) return 'shadow-lg shadow-red-500/20'
+    return 'shadow-lg shadow-blue-500/20'
   }
 
   return (
-    <Card className={`hover:shadow-lg transition-all duration-300 hover:scale-[1.02] ${getStatusColor()} ${className}`}>
-      <CardHeader className="pb-4">
-        <div className="flex items-center justify-between mb-2">
+    <Card className={`border-0 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] ${getStatusColor()} ${className}`}>
+      <CardHeader className="pb-6">
+        <div className="flex items-center justify-between mb-4">
           {getStatusBadge()}
           <div className="flex items-center text-sm text-muted-foreground">
             <Calendar className="h-4 w-4 mr-1" />
@@ -43,17 +43,17 @@ export function MatchCard({ match, homeTeam, awayTeam, className }: MatchCardPro
           </div>
         </div>
         
-        <CardTitle className="text-lg sm:text-xl leading-tight">
+        <CardTitle className="text-lg sm:text-xl leading-tight text-center mb-3">
           {homeTeam.name} vs {awayTeam.name}
         </CardTitle>
         
-        <CardDescription className="flex items-center text-sm sm:text-base leading-relaxed">
+        <CardDescription className="flex items-center justify-center text-sm sm:text-base leading-relaxed mb-3">
           <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
           <span className="truncate">{match.venue}</span>
         </CardDescription>
         
         {!isCompleted && (
-          <div className="text-sm text-muted-foreground">
+          <div className="text-sm text-muted-foreground text-center">
             {formatTime(match.date)}
           </div>
         )}
@@ -166,7 +166,7 @@ export function MatchList({ matches, teams, title = "Recent Matches", limit, cla
         <h3 className="text-xl font-bold mb-6 text-center">{title}</h3>
       )}
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         {displayMatches.map((match) => {
           const homeTeam = getTeam(match.homeTeamId)
           const awayTeam = getTeam(match.awayTeamId)

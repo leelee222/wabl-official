@@ -22,10 +22,10 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8" aria-label="Global">
-        <div className="flex items-center">
-          <Link href="/" className="flex items-center space-x-2 lg:space-x-3">
-            <div className="relative w-8 h-8 lg:w-12 lg:h-12">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8" aria-label="Global">
+        <div className="flex items-center min-w-0">
+          <Link href="/" className="flex items-center space-x-2 lg:space-x-3 flex-shrink-0">
+            <div className="relative w-10 h-10 lg:w-12 lg:h-12 flex-shrink-0">
               <Image
                 src="/images/logos/wabl-1.png"
                 alt="WABL Logo"
@@ -34,9 +34,9 @@ export function Header() {
                 priority
               />
             </div>
-            <div className="flex flex-col">
-              <span className="text-lg lg:text-2xl font-bold text-primary">WABL</span>
-              <span className="text-xs lg:text-sm text-muted-foreground hidden sm:block">Where Legends Rise</span>
+            <div className="flex flex-col min-w-0">
+              <span className="text-xl lg:text-2xl font-bold text-primary truncate">WABL</span>
+              <span className="text-xs lg:text-sm text-muted-foreground hidden sm:block truncate">Where Legends Rise</span>
             </div>
           </Link>
         </div>
@@ -47,10 +47,10 @@ export function Header() {
               key={item.name}
               href={item.href}
               className={cn(
-                "text-sm font-semibold leading-6 px-3 py-2 rounded-md transition-all duration-200 hover:text-primary hover:bg-primary/5 whitespace-nowrap",
+                "text-sm font-semibold leading-6 px-4 py-2.5 rounded-lg transition-all duration-200 hover:text-primary hover:bg-primary/10 hover:scale-105 whitespace-nowrap active:scale-95",
                 pathname === item.href
-                  ? "text-primary bg-primary/10"
-                  : "text-muted-foreground"
+                  ? "text-primary-foreground bg-primary shadow-lg shadow-primary/25 ring-2 ring-primary/20"
+                  : "text-muted-foreground hover:shadow-md"
               )}
             >
               {item.name}
@@ -71,16 +71,16 @@ export function Header() {
 
       <div className="lg:hidden border-t bg-background/95">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="flex items-center justify-center space-x-1 py-2 overflow-x-auto">
+          <div className="flex items-center justify-start space-x-1 py-3 overflow-x-auto scrollbar-hide">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium px-3 py-2 rounded-md transition-all duration-200 hover:text-primary hover:bg-primary/5 whitespace-nowrap flex-shrink-0",
+                  "text-sm font-medium px-4 py-2.5 rounded-lg transition-all duration-200 hover:text-primary hover:bg-primary/10 whitespace-nowrap flex-shrink-0 active:scale-95",
                   pathname === item.href
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground"
+                    ? "text-primary-foreground bg-primary shadow-md shadow-primary/25 ring-1 ring-primary/30"
+                    : "text-muted-foreground hover:shadow-sm"
                 )}
               >
                 {item.name}

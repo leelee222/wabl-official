@@ -42,7 +42,7 @@ export function StandingsPreview({ teams, limit = 4, showFullButton = true, clas
       )}
       
       <Card>
-        <CardContent className="p-10">
+        <CardContent className="p-5">
         <div className="space-y-3">
           {sortedTeams.map((team, index) => {
             const streak = getWinStreak(team.id)

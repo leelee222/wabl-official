@@ -171,8 +171,9 @@ function SearchPageContent() {
                       </CardHeader>
                       <CardContent className="space-y-3">
                         {results.players.map((player) => (
-                          <div
+                          <Link
                             key={player.id}
+                            href={`/players/${player.id}`}
                             className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors border border-transparent hover:border-border"
                           >
                             <div className="relative w-10 h-10 rounded-full overflow-hidden bg-muted">
@@ -199,7 +200,7 @@ function SearchPageContent() {
                               </div>
                               <div className="text-xs text-muted-foreground">PPG</div>
                             </div>
-                          </div>
+                          </Link>
                         ))}
                       </CardContent>
                     </Card>
@@ -218,9 +219,10 @@ function SearchPageContent() {
                       </CardHeader>
                       <CardContent className="space-y-3">
                         {results.matches.map((match) => (
-                          <div
+                          <Link
                             key={match.id}
-                            className="p-3 rounded-lg hover:bg-muted/50 transition-colors border border-transparent hover:border-border"
+                            href={`/schedule?highlight=${match.id}`}
+                            className="block p-3 rounded-lg hover:bg-muted/50 transition-colors border border-transparent hover:border-border"
                           >
                             <div className="flex items-center justify-between mb-2">
                               <div className="font-medium text-sm">
@@ -241,7 +243,7 @@ function SearchPageContent() {
                                 {match.score.away} - {match.score.home}
                               </div>
                             )}
-                          </div>
+                          </Link>
                         ))}
                       </CardContent>
                     </Card>

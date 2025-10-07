@@ -67,7 +67,6 @@ export interface Match {
   attendance?: number
 }
 
-// Data getters
 export function getTeams(): Team[] {
   return teamsData as Team[]
 }
@@ -165,7 +164,6 @@ export function getWinStreak(teamId: string): { type: 'W' | 'L', count: number }
   }
 }
 
-// Calculate points per game and opponent points per game
 export function getTeamAverages(team: Team): { ppg: number, oppg: number } {
   const totalGames = team.stats.wins + team.stats.losses
   return {
