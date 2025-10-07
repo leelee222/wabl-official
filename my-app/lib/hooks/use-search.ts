@@ -1,50 +1,71 @@
-import { useState, useEffect, useCallback } from 'react'
-import { Team, Player, Match } from '@/lib/utils/data'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { SearchResult } from '@/lib/types'
+import { useDebounce } from './use-debounce'
 
-interface SearchResult {
-  teams: Team[]
-  players: (Player & { team?: Team })[]
-  matches: (Match & { homeTeam?: Team; awayTeam?: Team })[]
+export const SEARCH_QUERY_KEYS = {
+  all: ['search'] as const,
+  queries: () => [...SEARCH_QUERY_KEYS.all, 'query'] as const,
+  query: (q: string) => [...SEARCH_QUERY_KEYS.queries(), q] as const,
+}
+
+async function performSearch(query: string): Promise<{
+  results: SearchResult[]
   total: number
-  query: string
+  timestamp: string
+}> {
+  if (!query.trim()) {
+    return { results: [], total: 0, timestamp: new Date().toISOString() }
+  }
+
+  const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`)
+  
+  if (!response.ok) {
+    throw new Error('Search failed')
+  }
+  
+  return response.json()
 }
 
 export function useSearch(query: string, delay: number = 300) {
-  const [results, setResults] = useState<SearchResult | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const debouncedQuery = useDebounce(query, delay)
+  
+  return useQuery({
+    queryKey: SEARCH_QUERY_KEYS.query(debouncedQuery),
+    queryFn: () => performSearch(debouncedQuery),
+    enabled: debouncedQuery.length > 0,
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
+  })
+}
 
-  const search = useCallback(async (searchQuery: string) => {
-    if (!searchQuery || searchQuery.length < 2) {
-      setResults(null)
-      return
+export function useInstantSearch(query: string) {
+  return useQuery({
+    queryKey: SEARCH_QUERY_KEYS.query(query),
+    queryFn: () => performSearch(query),
+    enabled: query.length > 0,
+    staleTime: 2 * 60 * 1000,
+    gcTime: 5 * 60 * 1000,
+  })
+}
+
+export function usePrefetchSearch() {
+  const queryClient = useQueryClient()
+  
+  return (query: string) => {
+    if (query.length > 0) {
+      queryClient.prefetchQuery({
+        queryKey: SEARCH_QUERY_KEYS.query(query),
+        queryFn: () => performSearch(query),
+        staleTime: 5 * 60 * 1000,
+      })
     }
+  }
+}
 
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`)
-      if (!response.ok) {
-        throw new Error('Search failed')
-      }
-      const data = await response.json()
-      setResults(data)
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Search failed')
-      setResults(null)
-    } finally {
-      setIsLoading(false)
-    }
-  }, [])
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      search(query)
-    }, delay)
-
-    return () => clearTimeout(timer)
-  }, [query, delay, search])
-
-  return { results, isLoading, error }
+export function useClearSearchCache() {
+  const queryClient = useQueryClient()
+  
+  return () => {
+    queryClient.removeQueries({ queryKey: SEARCH_QUERY_KEYS.all })
+  }
 }

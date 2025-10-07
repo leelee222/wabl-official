@@ -16,7 +16,13 @@ export function SearchBar() {
   const [showInlineResults, setShowInlineResults] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  const { results, isLoading } = useSearch(query)
+  const { data: searchData, isLoading } = useSearch(query)
+  
+  const results = searchData?.results || []
+  const teamResults = results.filter(r => r.type === 'team')
+  const playerResults = results.filter(r => r.type === 'player')
+  const matchResults = results.filter(r => r.type === 'match')
+  const hasResults = results.length > 0
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -68,8 +74,6 @@ export function SearchBar() {
     setQuery(value)
   }
 
-  const hasResults = results && (results.teams.length > 0 || results.players.length > 0 || results.matches.length > 0)
-
   return (
     <div ref={containerRef} className="relative">
       <div className="hidden lg:block relative">
@@ -93,7 +97,7 @@ export function SearchBar() {
                 ref={inputRef}
                 placeholder="Search teams, players..."
                 value={query}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInlineSearch(e.target.value)}
+                onChange={(e) => handleInlineSearch(e.target.value)}
                 className="pl-10 pr-10 w-full"
                 autoFocus
               />
@@ -125,16 +129,16 @@ export function SearchBar() {
                     </div>
                   ) : (
                     <div className="py-2">
-                      {results && results.teams.length > 0 && (
+                      {teamResults.length > 0 && (
                         <div className="px-4 py-2">
                           <div className="flex items-center gap-2 text-sm font-semibold text-muted-foreground mb-2">
                             <Trophy className="h-4 w-4" />
-                            Teams ({results.teams.length})
+                            Teams ({teamResults.length})
                           </div>
-                          {results.teams.slice(0, 3).map((team) => (
+                          {teamResults.slice(0, 3).map((result) => (
                             <Link
-                              key={team.id}
-                              href={`/teams/${team.id}`}
+                              key={result.id}
+                              href={result.url}
                               onClick={() => {
                                 setShowInlineResults(false)
                                 setQuery('')
@@ -142,37 +146,39 @@ export function SearchBar() {
                               className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors"
                             >
                               <div className="relative w-8 h-8 rounded-full overflow-hidden">
-                                <Image
-                                  src={team.logo}
-                                  alt={`${team.name} logo`}
-                                  fill
-                                  className="object-cover"
-                                  sizes="32px"
-                                  onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    target.style.display = 'none';
-                                  }}
-                                />
+                                {result.image && (
+                                  <Image
+                                    src={result.image}
+                                    alt={result.title}
+                                    fill
+                                    className="object-cover"
+                                    sizes="32px"
+                                    onError={(e) => {
+                                      const target = e.target as HTMLImageElement;
+                                      target.style.display = 'none';
+                                    }}
+                                  />
+                                )}
                               </div>
                               <div>
-                                <div className="font-medium text-sm">{team.name}</div>
-                                <div className="text-xs text-muted-foreground">{team.city}</div>
+                                <div className="font-medium text-sm">{result.title}</div>
+                                <div className="text-xs text-muted-foreground">{result.subtitle}</div>
                               </div>
                             </Link>
                           ))}
                         </div>
                       )}
 
-                      {results && results.players.length > 0 && (
+                      {playerResults.length > 0 && (
                         <div className="px-4 py-2 border-t">
                           <div className="flex items-center gap-2 text-sm font-semibold text-muted-foreground mb-2">
                             <Users className="h-4 w-4" />
-                            Players ({results.players.length})
+                            Players ({playerResults.length})
                           </div>
-                          {results.players.slice(0, 3).map((player) => (
+                          {playerResults.slice(0, 3).map((result) => (
                             <Link
-                              key={player.id}
-                              href={`/players/${player.id}`}
+                              key={result.id}
+                              href={result.url}
                               onClick={() => {
                                 setShowInlineResults(false)
                                 setQuery('')
@@ -180,28 +186,30 @@ export function SearchBar() {
                               className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors"
                             >
                               <div className="relative w-8 h-8 rounded-full overflow-hidden bg-muted">
-                                <Image
-                                  src={player.photo}
-                                  alt={player.name}
-                                  fill
-                                  className="object-cover"
-                                  sizes="32px"
-                                  onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    target.style.display = 'none';
-                                  }}
-                                />
+                                {result.image && (
+                                  <Image
+                                    src={result.image}
+                                    alt={result.title}
+                                    fill
+                                    className="object-cover"
+                                    sizes="32px"
+                                    onError={(e) => {
+                                      const target = e.target as HTMLImageElement;
+                                      target.style.display = 'none';
+                                    }}
+                                  />
+                                )}
                               </div>
                               <div>
-                                <div className="font-medium text-sm">{player.name}</div>
-                                <div className="text-xs text-muted-foreground">#{player.number} • {player.position}</div>
+                                <div className="font-medium text-sm">{result.title}</div>
+                                <div className="text-xs text-muted-foreground">{result.subtitle}</div>
                               </div>
                             </Link>
                           ))}
                         </div>
                       )}
 
-                      {results && (results.teams.length > 3 || results.players.length > 3 || results.matches.length > 0) && (
+                      {(teamResults.length > 3 || playerResults.length > 3 || matchResults.length > 0) && (
                         <div className="px-4 py-2 border-t">
                           <Link
                             href={`/search?q=${encodeURIComponent(query)}`}
@@ -244,7 +252,7 @@ export function SearchBar() {
                 ref={inputRef}
                 placeholder="Search teams, players..."
                 value={query}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
+                onChange={(e) => setQuery(e.target.value)}
                 className="pl-10 pr-10"
                 autoFocus
               />
@@ -272,36 +280,38 @@ export function SearchBar() {
                   </div>
                 ) : (
                   <div className="space-y-6">
-                    {results && results.teams.length > 0 && (
+                    {teamResults.length > 0 && (
                       <div>
                         <div className="flex items-center gap-2 text-sm font-semibold text-muted-foreground mb-3">
                           <Trophy className="h-4 w-4" />
-                          Teams ({results.teams.length})
+                          Teams ({teamResults.length})
                         </div>
                         <div className="space-y-2">
-                          {results.teams.map((team) => (
+                          {teamResults.map((result) => (
                             <Link
-                              key={team.id}
-                              href={`/teams/${team.id}`}
+                              key={result.id}
+                              href={result.url}
                               onClick={handleClose}
                               className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
                             >
                               <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                                <Image
-                                  src={team.logo}
-                                  alt={`${team.name} logo`}
-                                  fill
-                                  className="object-cover"
-                                  sizes="40px"
-                                  onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    target.style.display = 'none';
-                                  }}
-                                />
+                                {result.image && (
+                                  <Image
+                                    src={result.image}
+                                    alt={result.title}
+                                    fill
+                                    className="object-cover"
+                                    sizes="40px"
+                                    onError={(e) => {
+                                      const target = e.target as HTMLImageElement;
+                                      target.style.display = 'none';
+                                    }}
+                                  />
+                                )}
                               </div>
                               <div>
-                                <div className="font-medium">{team.name}</div>
-                                <div className="text-sm text-muted-foreground">{team.city}</div>
+                                <div className="font-medium">{result.title}</div>
+                                <div className="text-sm text-muted-foreground">{result.subtitle}</div>
                               </div>
                             </Link>
                           ))}
@@ -309,36 +319,38 @@ export function SearchBar() {
                       </div>
                     )}
 
-                    {results && results.players.length > 0 && (
+                    {playerResults.length > 0 && (
                       <div>
                         <div className="flex items-center gap-2 text-sm font-semibold text-muted-foreground mb-3">
                           <Users className="h-4 w-4" />
-                          Players ({results.players.length})
+                          Players ({playerResults.length})
                         </div>
                         <div className="space-y-2">
-                          {results.players.map((player) => (
+                          {playerResults.map((result) => (
                             <Link
-                              key={player.id}
-                              href={`/players/${player.id}`}
+                              key={result.id}
+                              href={result.url}
                               onClick={handleClose}
                               className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
                             >
                               <div className="relative w-10 h-10 rounded-full overflow-hidden bg-muted">
-                                <Image
-                                  src={player.photo}
-                                  alt={player.name}
-                                  fill
-                                  className="object-cover"
-                                  sizes="40px"
-                                  onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    target.style.display = 'none';
-                                  }}
-                                />
+                                {result.image && (
+                                  <Image
+                                    src={result.image}
+                                    alt={result.title}
+                                    fill
+                                    className="object-cover"
+                                    sizes="40px"
+                                    onError={(e) => {
+                                      const target = e.target as HTMLImageElement;
+                                      target.style.display = 'none';
+                                    }}
+                                  />
+                                )}
                               </div>
                               <div>
-                                <div className="font-medium">{player.name}</div>
-                                <div className="text-sm text-muted-foreground">#{player.number} • {player.position}</div>
+                                <div className="font-medium">{result.title}</div>
+                                <div className="text-sm text-muted-foreground">{result.subtitle}</div>
                               </div>
                             </Link>
                           ))}
@@ -353,157 +365,5 @@ export function SearchBar() {
         </div>
       )}
     </div>
-  )
-}
-
-export function MobileSearchBar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [query, setQuery] = useState('')
-  const inputRef = useRef<HTMLInputElement>(null)
-  const { results, isLoading } = useSearch(query)
-
-  useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus()
-    }
-  }, [isOpen])
-
-  const handleClose = () => {
-    setIsOpen(false)
-    setQuery('')
-  }
-
-  const hasResults = results && (results.teams.length > 0 || results.players.length > 0 || results.matches.length > 0)
-
-  return (
-    <>
-      <Button 
-        variant="ghost" 
-        size="sm" 
-        onClick={() => setIsOpen(true)}
-        className="w-full justify-start text-muted-foreground hover:text-primary"
-      >
-        <Search className="h-4 w-4 mr-2" />
-        Search...
-      </Button>
-
-      {isOpen && (
-        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50">
-          <div className="fixed top-0 left-0 right-0 p-4 border-b bg-background">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                ref={inputRef}
-                placeholder="Search teams, players..."
-                value={query}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
-                className="pl-10 pr-10"
-                autoFocus
-              />
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={handleClose}
-                className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8"
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-
-          <div className="mt-16 max-h-[calc(100vh-4rem)] overflow-y-auto">
-            {query && (
-              <div className="p-4">
-                {isLoading ? (
-                  <div className="text-center text-muted-foreground py-8">
-                    <div className="animate-pulse">Searching...</div>
-                  </div>
-                ) : !hasResults ? (
-                  <div className="text-center text-muted-foreground py-8">
-                    No results found for &quot;{query}&quot;
-                  </div>
-                ) : (
-                  <div className="space-y-6">
-                    {results && results.teams.length > 0 && (
-                      <div>
-                        <div className="flex items-center gap-2 text-sm font-semibold text-muted-foreground mb-3">
-                          <Trophy className="h-4 w-4" />
-                          Teams ({results.teams.length})
-                        </div>
-                        <div className="space-y-2">
-                          {results.teams.map((team) => (
-                            <Link
-                              key={team.id}
-                              href={`/teams/${team.id}`}
-                              onClick={handleClose}
-                              className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
-                            >
-                              <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                                <Image
-                                  src={team.logo}
-                                  alt={`${team.name} logo`}
-                                  fill
-                                  className="object-cover"
-                                  sizes="40px"
-                                  onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    target.style.display = 'none';
-                                  }}
-                                />
-                              </div>
-                              <div>
-                                <div className="font-medium">{team.name}</div>
-                                <div className="text-sm text-muted-foreground">{team.city}</div>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {results && results.players.length > 0 && (
-                      <div>
-                        <div className="flex items-center gap-2 text-sm font-semibold text-muted-foreground mb-3">
-                          <Users className="h-4 w-4" />
-                          Players ({results.players.length})
-                        </div>
-                        <div className="space-y-2">
-                          {results.players.map((player) => (
-                            <Link
-                              key={player.id}
-                              href={`/players/${player.id}`}
-                              onClick={handleClose}
-                              className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
-                            >
-                              <div className="relative w-10 h-10 rounded-full overflow-hidden bg-muted">
-                                <Image
-                                  src={player.photo}
-                                  alt={player.name}
-                                  fill
-                                  className="object-cover"
-                                  sizes="40px"
-                                  onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    target.style.display = 'none';
-                                  }}
-                                />
-                              </div>
-                              <div>
-                                <div className="font-medium">{player.name}</div>
-                                <div className="text-sm text-muted-foreground">#{player.number} • {player.position}</div>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-    </>
   )
 }

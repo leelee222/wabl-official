@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getTeams, getPlayers, getMatches } from '@/lib/utils/data'
+import { SearchResult } from '@/lib/types'
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
@@ -7,10 +8,9 @@ export async function GET(request: NextRequest) {
 
   if (!query || query.length < 2) {
     return NextResponse.json({
-      teams: [],
-      players: [],
-      matches: [],
-      total: 0
+      results: [],
+      total: 0,
+      timestamp: new Date().toISOString()
     })
   }
 
@@ -19,6 +19,7 @@ export async function GET(request: NextRequest) {
   const matches = getMatches()
 
   const searchQuery = query.toLowerCase()
+  const results: SearchResult[] = []
 
   const matchingTeams = teams.filter(team =>
     team.name.toLowerCase().includes(searchQuery) ||
@@ -26,13 +27,33 @@ export async function GET(request: NextRequest) {
     team.country.toLowerCase().includes(searchQuery)
   )
 
+  matchingTeams.forEach(team => {
+    results.push({
+      type: 'team',
+      id: team.id,
+      title: team.name,
+      subtitle: `${team.city}, ${team.country}`,
+      image: team.logo,
+      url: `/teams/${team.id}`
+    })
+  })
+
   const matchingPlayers = players.filter(player =>
     player.name.toLowerCase().includes(searchQuery) ||
     player.position.toLowerCase().includes(searchQuery) ||
     player.nationality.toLowerCase().includes(searchQuery)
-  ).map(player => {
+  )
+
+  matchingPlayers.forEach(player => {
     const team = teams.find(t => t.id === player.teamId)
-    return { ...player, team }
+    results.push({
+      type: 'player',
+      id: player.id,
+      title: player.name,
+      subtitle: `#${player.number} • ${player.position}${team ? ` • ${team.name}` : ''}`,
+      image: player.photo,
+      url: `/players/${player.id}`
+    })
   })
 
   const matchingMatches = matches.filter(match => {
@@ -44,19 +65,25 @@ export async function GET(request: NextRequest) {
       awayTeam?.name.toLowerCase().includes(searchQuery) ||
       match.venue.toLowerCase().includes(searchQuery)
     )
-  }).map(match => {
-    const homeTeam = teams.find(t => t.id === match.homeTeamId)
-    const awayTeam = teams.find(t => t.id === match.awayTeamId)
-    return { ...match, homeTeam, awayTeam }
   })
 
-  const total = matchingTeams.length + matchingPlayers.length + matchingMatches.length
+  matchingMatches.forEach(match => {
+    const homeTeam = teams.find(t => t.id === match.homeTeamId)
+    const awayTeam = teams.find(t => t.id === match.awayTeamId)
+    const matchDate = new Date(match.date).toLocaleDateString()
+    
+    results.push({
+      type: 'match',
+      id: match.id,
+      title: `${homeTeam?.name || 'TBD'} vs ${awayTeam?.name || 'TBD'}`,
+      subtitle: `${matchDate} • ${match.venue}`,
+      url: `/matches/${match.id}`
+    })
+  })
 
   return NextResponse.json({
-    teams: matchingTeams.slice(0, 5),
-    players: matchingPlayers.slice(0, 8),
-    matches: matchingMatches.slice(0, 5),
-    total,
-    query
+    results: results.slice(0, 20),
+    total: results.length,
+    timestamp: new Date().toISOString()
   })
 }

@@ -8,6 +8,7 @@ import { Search } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "./theme-toggle"
+import { SearchBar } from "@/components/features/search-bar-fixed"
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -60,9 +61,9 @@ export function Header() {
 
         <div className="flex items-center space-x-2 lg:space-x-4">
           <Link href="/search">
-            <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
+            <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary" title="Search Page">
               <Search className="h-5 w-5" />
-              <span className="sr-only">Search</span>
+              <span className="sr-only">Search Page</span>
             </Button>
           </Link>
           <ThemeToggle />

@@ -1,5 +1,3 @@
-// WABL (West African Basketball League) Type Definitions
-
 export interface Team {
   id: string;
   name: string;
@@ -19,7 +17,7 @@ export interface Team {
     pointsFor: number;
     pointsAgainst: number;
   };
-  slug: string; // URL-friendly version of team name
+  slug: string;
 }
 
 export interface Player {
@@ -28,34 +26,37 @@ export interface Player {
   teamId: string;
   number: number;
   position: 'PG' | 'SG' | 'SF' | 'PF' | 'C';
-  height: string; // e.g., "6'2\""
-  weight: string; // e.g., "185 lbs"
+  height: string;
+  weight: string;
   nationality: string;
   photo: string;
   age: number;
-  experience: number; // years in league
+  experience: number;
   stats: {
-    ppg: number;  // points per game
-    rpg: number;  // rebounds per game
-    apg: number;  // assists per game
-    fg: number;   // field goal percentage (0-100)
-    ft: number;   // free throw percentage (0-100)
-    threePt: number; // three point percentage (0-100)
+    ppg: number;
+    rpg: number;
+    apg: number;
+    fg: number;
+    ft: number;
+    threePt: number;
     steals: number;
     blocks: number;
   };
-  achievements?: string[]; // MVP, All-Star, etc.
+  achievements?: string[];
 }
 
 export interface Match {
   id: string;
-  homeTeam: string; // team ID
-  awayTeam: string; // team ID
-  date: string; // ISO date string
-  time: string; // e.g., "7:30 PM WAT"
+  homeTeamId: string;
+  awayTeamId: string;
+  homeTeam?: string;
+  awayTeam?: string;
+  date: string;
+  time?: string;
   venue: string;
-  city: string;
+  city?: string;
   status: 'completed' | 'upcoming' | 'live' | 'postponed';
+  round?: number;
   score?: {
     home: number;
     away: number;
@@ -67,13 +68,13 @@ export interface Match {
       overtime?: { home: number; away: number };
     };
   };
-  quarter?: number; // current quarter for live games
-  timeRemaining?: string; // e.g., "2:45" for live games
+  quarter?: number;
+  timeRemaining?: string;
   attendance?: number;
-  highlights?: string[]; // URLs to highlight videos
-  recap?: string; // game summary
-  season: string; // e.g., "2024-25"
-  week: number;
+  highlights?: string[];
+  recap?: string;
+  season?: string;
+  week?: number;
 }
 
 export interface Standing {
@@ -85,14 +86,13 @@ export interface Standing {
   pointsFor: number;
   pointsAgainst: number;
   pointsDifference: number;
-  streak: string; // e.g., "W3", "L1"
-  lastFive: string; // e.g., "3-2"
-  homeRecord: string; // e.g., "5-2"
-  awayRecord: string; // e.g., "3-4"
-  conference?: string; // if applicable
+  streak: string;
+  lastFive: string;
+  homeRecord: string;
+  awayRecord: string;
+  conference?: string;
 }
 
-// Game statistics for individual games
 export interface GameStats {
   matchId: string;
   teamStats: {
@@ -127,7 +127,6 @@ export interface GameStats {
   };
 }
 
-// Search result types
 export interface SearchResult {
   type: 'team' | 'player' | 'match';
   id: string;
@@ -137,7 +136,6 @@ export interface SearchResult {
   url: string;
 }
 
-// League information
 export interface League {
   name: string;
   fullName: string;
@@ -157,7 +155,6 @@ export interface League {
   };
 }
 
-// News/Articles
 export interface Article {
   id: string;
   title: string;
@@ -169,17 +166,15 @@ export interface Article {
   category: 'news' | 'analysis' | 'interview' | 'feature' | 'recap';
   tags: string[];
   featuredImage?: string;
-  relatedPlayers?: string[]; // player IDs
-  relatedTeams?: string[]; // team IDs
+  relatedPlayers?: string[];
+  relatedTeams?: string[];
   slug: string;
 }
 
-// Utility types
 export type Position = 'PG' | 'SG' | 'SF' | 'PF' | 'C';
 export type MatchStatus = 'completed' | 'upcoming' | 'live' | 'postponed';
 export type Theme = 'light' | 'dark' | 'system';
 
-// API response types
 export interface ApiResponse<T> {
   data: T;
   success: boolean;
@@ -198,7 +193,6 @@ export interface PaginatedResponse<T> extends ApiResponse<T[]> {
   };
 }
 
-// Component prop types
 export interface TeamCardProps {
   team: Team;
   showStats?: boolean;
@@ -223,7 +217,6 @@ export interface MatchCardProps {
   className?: string;
 }
 
-// Form types
 export interface SearchFilters {
   query: string;
   type?: 'all' | 'teams' | 'players' | 'matches';
@@ -232,7 +225,6 @@ export interface SearchFilters {
   country?: string;
 }
 
-// Chart/Stats data types
 export interface ChartDataPoint {
   label: string;
   value: number;

@@ -68,11 +68,21 @@ export interface Match {
 }
 
 export function getTeams(): Team[] {
-  return teamsData as Team[]
+  return teamsData.map(team => ({
+    ...team,
+    slug: team.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
+  })) as Team[]
 }
 
 export function getTeam(id: string): Team | undefined {
   return teamsData.find(team => team.id === id) as Team | undefined
+}
+
+export function getTeamBySlug(slug: string): Team | undefined {
+  return teamsData.find(team => {
+    const teamSlug = team.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
+    return teamSlug === slug
+  }) as Team | undefined
 }
 
 export function getPlayers(): Player[] {

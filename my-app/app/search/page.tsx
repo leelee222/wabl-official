@@ -15,7 +15,7 @@ function SearchPageContent() {
   const searchParams = useSearchParams()
   const initialQuery = searchParams.get('q') || ''
   const [query, setQuery] = useState(initialQuery)
-  const { results, isLoading, error } = useSearch(query)
+  const { data: searchData, isLoading, error } = useSearch(query)
 
   useEffect(() => {
     if (initialQuery) {
@@ -23,7 +23,11 @@ function SearchPageContent() {
     }
   }, [initialQuery])
 
-  const hasResults = results && (results.teams.length > 0 || results.players.length > 0 || results.matches.length > 0)
+  const results = searchData?.results || []
+  const teamResults = results.filter(r => r.type === 'team')
+  const playerResults = results.filter(r => r.type === 'player')
+  const matchResults = results.filter(r => r.type === 'match')
+  const hasResults = results.length > 0
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -65,7 +69,7 @@ function SearchPageContent() {
           {error && (
             <Card>
               <CardContent className="p-6 text-center">
-                <p className="text-destructive">Error: {error}</p>
+                <p className="text-destructive">Error: {error.message}</p>
               </CardContent>
             </Card>
           )}
@@ -115,41 +119,43 @@ function SearchPageContent() {
                   Search results for &ldquo;{query}&rdquo;
                 </h2>
                 <Badge variant="outline">
-                  {results.total} total results
+                  {searchData?.total || results.length} total results
                 </Badge>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="space-y-4">
-                  {results.teams.length > 0 && (
+                  {teamResults.length > 0 && (
                     <Card>
                       <CardHeader>
                         <CardTitle className="flex items-center gap-2 text-lg">
                           <Users className="h-5 w-5 text-primary" />
                           Teams
-                          <Badge variant="outline">{results.teams.length}</Badge>
+                          <Badge variant="outline">{teamResults.length}</Badge>
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-3">
-                        {results.teams.map((team) => (
+                        {teamResults.map((result) => (
                           <Link
-                            key={team.id}
-                            href={`/teams/${team.id}`}
+                            key={result.id}
+                            href={result.url}
                             className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors border border-transparent hover:border-border"
                           >
                             <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                              <Image
-                                src={team.logo}
-                                alt={`${team.name} logo`}
-                                fill
-                                className="object-cover"
-                                sizes="40px"
-                              />
+                              {result.image && (
+                                <Image
+                                  src={result.image}
+                                  alt={result.title}
+                                  fill
+                                  className="object-cover"
+                                  sizes="40px"
+                                />
+                              )}
                             </div>
                             <div className="flex-1 min-w-0">
-                              <div className="font-medium truncate">{team.name}</div>
+                              <div className="font-medium truncate">{result.title}</div>
                               <div className="text-sm text-muted-foreground">
-                                {team.city}, {team.country}
+                                {result.subtitle}
                               </div>
                             </div>
                           </Link>
@@ -160,45 +166,38 @@ function SearchPageContent() {
                 </div>
 
                 <div className="space-y-4">
-                  {results.players.length > 0 && (
+                  {playerResults.length > 0 && (
                     <Card>
                       <CardHeader>
                         <CardTitle className="flex items-center gap-2 text-lg">
                           <Trophy className="h-5 w-5 text-primary" />
                           Players
-                          <Badge variant="outline">{results.players.length}</Badge>
+                          <Badge variant="outline">{playerResults.length}</Badge>
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-3">
-                        {results.players.map((player) => (
+                        {playerResults.map((result) => (
                           <Link
-                            key={player.id}
-                            href={`/players/${player.id}`}
+                            key={result.id}
+                            href={result.url}
                             className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors border border-transparent hover:border-border"
                           >
                             <div className="relative w-10 h-10 rounded-full overflow-hidden bg-muted">
-                              <Image
-                                src={player.photo}
-                                alt={player.name}
-                                fill
-                                className="object-cover"
-                                sizes="40px"
-                              />
+                              {result.image && (
+                                <Image
+                                  src={result.image}
+                                  alt={result.title}
+                                  fill
+                                  className="object-cover"
+                                  sizes="40px"
+                                />
+                              )}
                             </div>
                             <div className="flex-1 min-w-0">
-                              <div className="font-medium truncate">{player.name}</div>
+                              <div className="font-medium truncate">{result.title}</div>
                               <div className="text-sm text-muted-foreground">
-                                #{player.number} • {player.position}
+                                {result.subtitle}
                               </div>
-                              <div className="text-xs text-muted-foreground">
-                                {player.team?.name}
-                              </div>
-                            </div>
-                            <div className="text-right">
-                              <div className="text-sm font-mono">
-                                {player.stats.ppg.toFixed(1)}
-                              </div>
-                              <div className="text-xs text-muted-foreground">PPG</div>
                             </div>
                           </Link>
                         ))}
@@ -208,41 +207,30 @@ function SearchPageContent() {
                 </div>
 
                 <div className="space-y-4">
-                  {results.matches.length > 0 && (
+                  {matchResults.length > 0 && (
                     <Card>
                       <CardHeader>
                         <CardTitle className="flex items-center gap-2 text-lg">
                           <Calendar className="h-5 w-5 text-primary" />
                           Matches
-                          <Badge variant="outline">{results.matches.length}</Badge>
+                          <Badge variant="outline">{matchResults.length}</Badge>
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-3">
-                        {results.matches.map((match) => (
+                        {matchResults.map((result) => (
                           <Link
-                            key={match.id}
-                            href={`/schedule?highlight=${match.id}`}
+                            key={result.id}
+                            href={result.url}
                             className="block p-3 rounded-lg hover:bg-muted/50 transition-colors border border-transparent hover:border-border"
                           >
                             <div className="flex items-center justify-between mb-2">
                               <div className="font-medium text-sm">
-                                {match.awayTeam?.name} vs {match.homeTeam?.name}
+                                {result.title}
                               </div>
-                              <Badge 
-                                variant={match.status === 'live' ? 'destructive' : 'outline'}
-                                className="text-xs"
-                              >
-                                {match.status}
-                              </Badge>
                             </div>
                             <div className="text-xs text-muted-foreground">
-                              {new Date(match.date).toLocaleDateString()} • {match.venue}
+                              {result.subtitle}
                             </div>
-                            {match.score && (
-                              <div className="text-sm font-mono mt-1">
-                                {match.score.away} - {match.score.home}
-                              </div>
-                            )}
                           </Link>
                         ))}
                       </CardContent>
