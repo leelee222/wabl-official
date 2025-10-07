@@ -103,7 +103,7 @@ export default function TeamsPage() {
       </section>
 
       <PageTransition>
-        <section className="py-16 lg:py-20">
+        <section className="py-4 lg:py-6">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <Suspense fallback={<TeamsLoadingFallback />}>
               <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">

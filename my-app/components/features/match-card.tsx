@@ -47,7 +47,7 @@ export function MatchCard({ match, homeTeam, awayTeam, className }: MatchCardPro
           {homeTeam.name} vs {awayTeam.name}
         </CardTitle>
         
-        <CardDescription className="flex items-center justify-center text-sm sm:text-base leading-relaxed mb-3">
+        <CardDescription className="flex items-center justify-center text-sm sm:text-base leading-relaxed mb-1">
           <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
           <span className="truncate">{match.venue}</span>
         </CardDescription>

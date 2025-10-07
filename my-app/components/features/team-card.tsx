@@ -26,22 +26,22 @@ export function TeamCard({ team, rank, className }: TeamCardProps) {
     if (rank === 1) return <Badge className="bg-yellow-500 text-yellow-900 hover:bg-yellow-600"><Trophy className="h-3 w-3 mr-1" />1st</Badge>
     if (rank === 2) return <Badge className="bg-gray-400 text-gray-900 hover:bg-gray-500"><Trophy className="h-3 w-3 mr-1" />2nd</Badge>
     if (rank === 3) return <Badge className="bg-amber-600 text-amber-100 hover:bg-amber-700"><Trophy className="h-3 w-3 mr-1" />3rd</Badge>
-    return <Badge variant="outline">#{rank}</Badge>
+    return <Badge className="bg-muted/50 text-muted-foreground shadow-md shadow-gray-400/20 dark:shadow-gray-600/20">#{rank}</Badge>
   }
 
   return (
     <HoverScale scale={1.02} tapScale={0.98}>
-      <Card className={`group hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/30 ${className}`}>
+      <Card className={`border-0 group hover:shadow-xl shadow-lg shadow-gray-400/10 dark:shadow-gray-600/20 transition-all duration-300 ${className}`}>
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between mb-4">
           {getRankBadge()}
-          <Badge variant="outline" className="text-xs">
+          <Badge className="bg-muted/50 text-muted-foreground shadow-sm shadow-gray-400/20 dark:shadow-gray-600/20 text-xs">
             {team.record.wins}-{team.record.losses}
           </Badge>
         </div>
         
         <div className="text-center">
-          <div className="relative w-16 h-16 mx-auto mb-4 rounded-full overflow-hidden border-4 border-primary/20 group-hover:border-primary/40 transition-all duration-300">
+          <div className="relative w-16 h-16 mx-auto mb-4 rounded-full overflow-hidden shadow-md shadow-primary/20 dark:shadow-primary/30 group-hover:shadow-lg group-hover:shadow-primary/30 dark:group-hover:shadow-primary/40 transition-all duration-300">
             <Image
               src={team.logo}
               alt={`${team.name} logo`}
@@ -113,8 +113,7 @@ export function TeamCard({ team, rank, className }: TeamCardProps) {
 
           <Link href={`/teams/${team.id}`} className="block">
             <Button 
-              variant="outline" 
-              className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300 text-foreground border-border"
+              className="w-full bg-muted/50 hover:bg-primary text-muted-foreground hover:text-primary-foreground shadow-md shadow-gray-400/20 dark:shadow-gray-600/20 hover:shadow-lg hover:shadow-primary/30 dark:hover:shadow-primary/40 transition-all duration-300 border-0"
               size="sm"
             >
               View Team

@@ -34,7 +34,7 @@ export function StandingsPreview({ teams, limit = 4, showFullButton = true, clas
             League Standings
           </h3>
           {limit < teams.length && (
-            <Badge variant="outline" className="text-xs">
+            <Badge className="bg-muted/50 text-muted-foreground shadow-sm shadow-gray-400/20 dark:shadow-gray-600/20 text-xs">
               Top {limit}
             </Badge>
           )}
@@ -52,7 +52,7 @@ export function StandingsPreview({ teams, limit = 4, showFullButton = true, clas
             return (
               <div 
                 key={team.id} 
-                className="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-muted/50 transition-colors border border-transparent hover:border-border"
+                className="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-muted/50 transition-colors shadow-sm shadow-gray-400/10 dark:shadow-gray-600/20 hover:shadow-md hover:shadow-gray-400/20 dark:hover:shadow-gray-600/30"
               >
                 <div className="flex items-center space-x-3 min-w-0 flex-1">
                   <div className="flex items-center justify-center w-8 h-8 rounded-full bg-muted flex-shrink-0">
@@ -97,9 +97,9 @@ export function StandingsPreview({ teams, limit = 4, showFullButton = true, clas
         </div>
         
         {showFullButton && (
-          <div className="mt-6 pt-4 border-t">
+          <div className="mt-6 pt-4">
             <Link href="/standings">
-              <Button variant="outline" className="w-full">
+              <Button className="w-full bg-muted/50 hover:bg-primary text-muted-foreground hover:text-primary-foreground shadow-md shadow-gray-400/20 dark:shadow-gray-600/20 hover:shadow-lg hover:shadow-primary/30 dark:hover:shadow-primary/40 transition-all duration-300 border-0">
                 View Full Standings
               </Button>
             </Link>
