@@ -244,10 +244,10 @@ npm run type-check   # Run TypeScript check
 ## 📊 Performance
 
 ### **Lighthouse Scores**
-- **Performance**: 81
-- **Accessibility**: 90
+- **Performance**: 78
+- **Accessibility**: 100
 - **Best Practices**: 96
-- **SEO**: 100
+- **SEO**: 91
 
 ### **Optimizations**
 - Image optimization with Next.js Image
