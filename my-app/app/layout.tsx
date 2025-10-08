@@ -59,6 +59,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased min-h-screen bg-background font-sans`}
+        suppressHydrationWarning
       >
         <QueryProvider>
           <ThemeProvider>

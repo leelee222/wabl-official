@@ -7,6 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Trophy, Users, MapPin, Calendar, TrendingUp, Star } from "lucide-react"
 import Image from "next/image"
 import { MatchList } from "@/components/features/match-card"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { use } from "react"
 
 interface TeamPageProps {
@@ -14,9 +16,11 @@ interface TeamPageProps {
 }
 
 export default function TeamPage({ params }: TeamPageProps) {
-  const resolvedParams = use(params)
+  const { slug } = use(params)
+  const router = useRouter()
+  
   const teams = getTeams()
-  const team = teams.find(t => t.id === resolvedParams.slug)
+  const team = teams.find(t => t.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') === slug)
   
   if (!team) {
     notFound()
@@ -199,45 +203,47 @@ export default function TeamPage({ params }: TeamPageProps) {
             <h3 className="text-lg font-semibold mb-4">Top Scorers</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {topScorers.map((player, index) => (
-                <Card key={player.id} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="relative w-12 h-12 rounded-full overflow-hidden bg-muted">
-                        <Image
-                          src={player.photo}
-                          alt={player.name}
-                          fill
-                          className="object-cover"
-                          sizes="48px"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                            const fallback = target.nextElementSibling as HTMLElement;
-                            if (fallback) fallback.style.display = 'flex';
-                          }}
-                        />
-                        <div 
-                          className="absolute inset-0 rounded-full flex items-center justify-center text-white font-bold text-sm"
-                          style={{ 
-                            display: 'none',
-                            backgroundColor: team.colors.primary
-                          }}
-                        >
-                          {player.name.split(' ').map(word => word[0]).join('')}
+                <Link key={player.id} href={`/players/${player.id}`} className="block group">
+                  <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group-hover:border-primary/50">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="relative w-12 h-12 rounded-full overflow-hidden bg-muted">
+                          <Image
+                            src={player.photo}
+                            alt={player.name}
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-200"
+                            sizes="48px"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                              const fallback = target.nextElementSibling as HTMLElement;
+                              if (fallback) fallback.style.display = 'flex';
+                            }}
+                          />
+                          <div 
+                            className="absolute inset-0 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                            style={{ 
+                              display: 'none',
+                              backgroundColor: team.colors.primary
+                            }}
+                          >
+                            {player.name.split(' ').map(word => word[0]).join('')}
+                          </div>
                         </div>
+                        <div>
+                          <div className="font-semibold text-sm group-hover:text-primary transition-colors">{player.name}</div>
+                          <div className="text-xs text-muted-foreground">#{player.number} • {player.position}</div>
+                        </div>
+                        {index === 0 && <Badge variant="outline" className="ml-auto">Top Scorer</Badge>}
                       </div>
-                      <div>
-                        <div className="font-semibold text-sm">{player.name}</div>
-                        <div className="text-xs text-muted-foreground">#{player.number} • {player.position}</div>
+                      <div className="text-center">
+                        <div className="text-xl font-bold text-primary">{player.stats.ppg.toFixed(1)}</div>
+                        <div className="text-xs text-muted-foreground">PPG</div>
                       </div>
-                      {index === 0 && <Badge variant="outline" className="ml-auto">Top Scorer</Badge>}
-                    </div>
-                    <div className="text-center">
-                      <div className="text-xl font-bold text-primary">{player.stats.ppg.toFixed(1)}</div>
-                      <div className="text-xs text-muted-foreground">PPG</div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
@@ -265,10 +271,23 @@ export default function TeamPage({ params }: TeamPageProps) {
                     {players
                       .sort((a, b) => a.number - b.number)
                       .map((player) => (
-                        <tr key={player.id} className="border-b hover:bg-muted/30 transition-colors">
+                        <tr 
+                          key={player.id} 
+                          className="border-b hover:bg-muted/50 transition-colors group cursor-pointer"
+                          onClick={() => router.push(`/players/${player.id}`)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault()
+                              router.push(`/players/${player.id}`)
+                            }
+                          }}
+                          tabIndex={0}
+                          role="button"
+                          aria-label={`View ${player.name} profile`}
+                        >
                           <td className="py-3 px-2 font-mono">{player.number}</td>
                           <td className="py-3 px-2">
-                            <div className="font-medium">{player.name}</div>
+                            <div className="font-medium group-hover:text-primary transition-colors">{player.name}</div>
                             <div className="text-sm text-muted-foreground">{player.nationality}</div>
                           </td>
                           <td className="py-3 px-2 font-mono">{player.position}</td>

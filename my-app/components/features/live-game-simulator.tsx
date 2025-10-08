@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Play, Pause, RotateCcw, Clock, Users, TrendingUp } from 'lucide-react'
 import { Team, Player } from '@/lib/utils/data'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 
 interface LiveGameSimulatorProps {
   homeTeam: Team
@@ -261,22 +262,94 @@ export function LiveGameSimulator({
   const isGameEnded = gameState.quarter > 4 || (gameState.quarter === 4 && gameState.timeLeft === 0)
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6">
+    <div className="w-full max-w-7xl mx-auto space-y-4 sm:space-y-6 px-4 sm:px-0">
       <Card className="bg-gradient-to-r from-primary to-accent text-white">
-        <CardHeader className="text-center pb-4">
-          <CardTitle className="text-2xl lg:text-3xl">
+        <CardHeader className="text-center pb-3 sm:pb-4 px-4 sm:px-6">
+          <CardTitle className="text-xl sm:text-2xl lg:text-3xl">
             {isGameEnded ? 'FINAL' : 'LIVE SIMULATION'}
           </CardTitle>
-          <div className="flex items-center justify-center gap-2 text-white/90">
-            <Clock className="w-4 h-4" />
+          <div className="flex items-center justify-center gap-2 text-white/90 text-sm sm:text-base">
+            <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>Q{gameState.quarter} - {formatTime(gameState.timeLeft)}</span>
           </div>
         </CardHeader>
       </Card>
 
       <Card className="overflow-hidden">
-        <CardContent className="p-6">
-          <div className="grid grid-cols-3 items-center gap-4 text-center">
+        <CardContent className="p-4 sm:p-6">
+          <div className="lg:hidden space-y-6">
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center justify-between bg-muted/30 rounded-lg p-4">
+                <div className="flex items-center gap-3">
+                  <div 
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                    style={{ backgroundColor: homeTeam.colors.primary }}
+                  >
+                    {homeTeam.name.split(' ').map(word => word[0]).join('')}
+                  </div>
+                  <div>
+                    <p className="font-bold text-base">{homeTeam.name}</p>
+                    <p className="text-sm text-muted-foreground">{homeTeam.city}</p>
+                  </div>
+                </div>
+                <motion.div 
+                  className="text-3xl font-bold"
+                  key={gameState.score.home}
+                  initial={{ scale: 1.2, color: '#10B981' }}
+                  animate={{ scale: 1, color: 'inherit' }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {gameState.score.home}
+                </motion.div>
+              </div>
+              
+              <div className="text-center space-y-4">
+                <div className="text-xl font-bold text-muted-foreground">VS</div>
+                <div className="flex flex-col sm:flex-row justify-center gap-2">
+                  <Button
+                    onClick={toggleGame}
+                    variant={gameState.isPlaying ? "destructive" : "default"}
+                    size="sm"
+                    disabled={isGameEnded}
+                    className="flex items-center gap-2"
+                  >
+                    {gameState.isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                    {gameState.isPlaying ? 'Pause' : 'Play'}
+                  </Button>
+                  <Button onClick={resetGame} variant="outline" size="sm" className="flex items-center gap-2">
+                    <RotateCcw className="w-4 h-4" />
+                    Reset
+                  </Button>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-between bg-muted/30 rounded-lg p-4">
+                <div className="flex items-center gap-3">
+                  <div 
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                    style={{ backgroundColor: awayTeam.colors.primary }}
+                  >
+                    {awayTeam.name.split(' ').map(word => word[0]).join('')}
+                  </div>
+                  <div>
+                    <p className="font-bold text-base">{awayTeam.name}</p>
+                    <p className="text-sm text-muted-foreground">{awayTeam.city}</p>
+                  </div>
+                </div>
+                <motion.div 
+                  className="text-3xl font-bold"
+                  key={gameState.score.away}
+                  initial={{ scale: 1.2, color: '#10B981' }}
+                  animate={{ scale: 1, color: 'inherit' }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {gameState.score.away}
+                </motion.div>
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden lg:grid lg:grid-cols-3 lg:items-center lg:gap-4 lg:text-center">
             <div className="space-y-3">
               <div className="flex items-center justify-center gap-3">
                 <div 
@@ -347,16 +420,16 @@ export function LiveGameSimulator({
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="w-5 h-5" />
+            <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+              <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
               Play-by-Play
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3 max-h-96 overflow-y-auto">
+            <div className="space-y-2 sm:space-y-3 max-h-80 sm:max-h-96 overflow-y-auto">
               <AnimatePresence>
                 {gameState.gameEvents.map((event, index) => (
                   <motion.div
@@ -365,16 +438,16 @@ export function LiveGameSimulator({
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 20 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className="flex items-start gap-3 p-3 rounded-lg bg-muted/50"
+                    className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/50"
                   >
                     <Badge 
                       variant={event.type === 'score' ? 'default' : 'secondary'}
-                      className="min-w-fit"
+                      className="min-w-fit text-xs"
                     >
                       Q{event.quarter} {formatTime(event.time)}
                     </Badge>
-                    <div className="flex-1">
-                      <p className="text-sm">{event.description}</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs sm:text-sm">{event.description}</p>
                       {event.points && (
                         <p className="text-xs text-muted-foreground">
                           +{event.points} points
@@ -385,7 +458,7 @@ export function LiveGameSimulator({
                 ))}
               </AnimatePresence>
               {gameState.gameEvents.length === 0 && (
-                <p className="text-center text-muted-foreground py-8">
+                <p className="text-center text-muted-foreground py-6 sm:py-8 text-sm">
                   Game events will appear here...
                 </p>
               )}
@@ -395,13 +468,13 @@ export function LiveGameSimulator({
 
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Users className="w-5 h-5" />
+            <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+              <Users className="w-4 h-4 sm:w-5 sm:h-5" />
               Leading Scorers
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {Object.entries(gameState.playerStats)
                 .map(([playerId, stats]) => ({
                   ...stats,
@@ -411,33 +484,41 @@ export function LiveGameSimulator({
                 .sort((a, b) => b.points - a.points)
                 .slice(0, 8)
                 .map((stat) => (
-                  <div key={stat.playerId} className="flex items-center justify-between p-2 rounded bg-muted/30">
-                    <div className="flex items-center gap-3">
-                      <div 
-                        className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold"
-                        style={{ 
-                          backgroundColor: stat.player?.teamId === homeTeam.id 
-                            ? homeTeam.colors.primary 
-                            : awayTeam.colors.primary 
-                        }}
-                      >
-                        #{stat.player?.number}
+                  <Link 
+                    key={stat.playerId} 
+                    href={`/players/${stat.playerId}`}
+                    className="block group"
+                  >
+                    <div className="flex items-center justify-between p-2 rounded bg-muted/30 group-hover:bg-muted/50 transition-colors cursor-pointer">
+                      <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+                        <div 
+                          className="w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
+                          style={{ 
+                            backgroundColor: stat.player?.teamId === homeTeam.id 
+                              ? homeTeam.colors.primary 
+                              : awayTeam.colors.primary 
+                          }}
+                        >
+                          #{stat.player?.number}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="font-medium text-xs sm:text-sm truncate group-hover:text-primary transition-colors">
+                            {stat.player?.name}
+                          </p>
+                          <p className="text-xs text-muted-foreground">{stat.player?.position}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-medium text-sm">{stat.player?.name}</p>
-                        <p className="text-xs text-muted-foreground">{stat.player?.position}</p>
+                      <div className="text-right flex-shrink-0">
+                        <p className="font-bold text-sm sm:text-base">{stat.points} PTS</p>
+                        <p className="text-xs text-muted-foreground">
+                          {stat.rebounds}R {stat.assists}A
+                        </p>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className="font-bold">{stat.points} PTS</p>
-                      <p className="text-xs text-muted-foreground">
-                        {stat.rebounds}R {stat.assists}A
-                      </p>
-                    </div>
-                  </div>
+                  </Link>
                 ))}
               {Object.values(gameState.playerStats).every(stat => stat.points === 0) && (
-                <p className="text-center text-muted-foreground py-8">
+                <p className="text-center text-muted-foreground py-6 sm:py-8 text-sm">
                   Player stats will appear here...
                 </p>
               )}

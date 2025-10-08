@@ -23,6 +23,7 @@ import { Trophy, Target, Shield, Zap, TrendingUp, Users, Star, Award } from 'luc
 import { Team, Player } from '@/lib/utils/data'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 interface StatsData {
   teams: Team[]
@@ -41,6 +42,7 @@ export function StatsChartViewer({ teams, players }: StatsData) {
       .map((player, index) => {
           const team = teams.find(t => t.id === player.teamId)
           return {
+              id: player.id,
               name: player.name,
               team: team?.name || '',
               teamColor: team?.colors.primary || '#3B82F6',
@@ -277,16 +279,16 @@ export function StatsChartViewer({ teams, players }: StatsData) {
       >
         <Card>
           <CardHeader>
-            <div className="flex items-center justify-between">
+            <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <Users className="w-6 h-6 text-accent" />
                 <CardTitle>Team Comparison</CardTitle>
               </div>
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
                 <select 
                   value={comparisonTeam1} 
                   onChange={(e) => setComparisonTeam1(e.target.value)}
-                  className="flex h-10 w-48 items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  className="flex h-10 w-full sm:w-48 items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                 >
                   {teams.map((team) => (
                     <option key={team.id} value={team.id}>
@@ -294,11 +296,11 @@ export function StatsChartViewer({ teams, players }: StatsData) {
                     </option>
                   ))}
                 </select>
-                <span className="self-center text-muted-foreground">vs</span>
+                <span className="self-center text-muted-foreground text-center sm:text-left">vs</span>
                 <select 
                   value={comparisonTeam2} 
                   onChange={(e) => setComparisonTeam2(e.target.value)}
-                  className="flex h-10 w-48 items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                  className="flex h-10 w-full sm:w-48 items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                 >
                   {teams.map((team) => (
                     <option key={team.id} value={team.id}>
@@ -349,46 +351,52 @@ export function StatsChartViewer({ teams, players }: StatsData) {
       >
         <Card>
           <CardContent className="p-6">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-primary/10 rounded-lg">
-                <Trophy className="w-6 h-6 text-primary" />
+            <Link href={`/players/${leaderData[0]?.id}`} className="block group">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Trophy className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">League Leader (PPG)</p>
+                  <p className="text-2xl font-bold group-hover:text-primary transition-colors">{leaderData[0]?.name}</p>
+                  <p className="text-sm text-muted-foreground">{leaderData[0]?.value} pts</p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground">League Leader (PPG)</p>
-                <p className="text-2xl font-bold">{leaderData[0]?.name}</p>
-                <p className="text-sm text-muted-foreground">{leaderData[0]?.value} pts</p>
-              </div>
-            </div>
+            </Link>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-green-500/10 rounded-lg">
-                <Shield className="w-6 h-6 text-green-500" />
+            <Link href={`/players/${getLeagueLeaders('rpg')[0]?.id}`} className="block group">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-green-500/10 rounded-lg">
+                  <Shield className="w-6 h-6 text-green-500" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Top Rebounder</p>
+                  <p className="text-2xl font-bold group-hover:text-primary transition-colors">{getLeagueLeaders('rpg')[0]?.name}</p>
+                  <p className="text-sm text-muted-foreground">{getLeagueLeaders('rpg')[0]?.value} reb</p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Top Rebounder</p>
-                <p className="text-2xl font-bold">{getLeagueLeaders('rpg')[0]?.name}</p>
-                <p className="text-sm text-muted-foreground">{getLeagueLeaders('rpg')[0]?.value} reb</p>
-              </div>
-            </div>
+            </Link>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-500/10 rounded-lg">
-                <Users className="w-6 h-6 text-blue-500" />
+            <Link href={`/players/${getLeagueLeaders('apg')[0]?.id}`} className="block group">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-blue-500/10 rounded-lg">
+                  <Users className="w-6 h-6 text-blue-500" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Assist Leader</p>
+                  <p className="text-2xl font-bold group-hover:text-primary transition-colors">{getLeagueLeaders('apg')[0]?.name}</p>
+                  <p className="text-sm text-muted-foreground">{getLeagueLeaders('apg')[0]?.value} ast</p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Assist Leader</p>
-                <p className="text-2xl font-bold">{getLeagueLeaders('apg')[0]?.name}</p>
-                <p className="text-sm text-muted-foreground">{getLeagueLeaders('apg')[0]?.value} ast</p>
-              </div>
-            </div>
+            </Link>
           </CardContent>
         </Card>
 

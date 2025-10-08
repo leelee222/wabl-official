@@ -117,31 +117,35 @@ END:VCALENDAR`
                 const awayTeam = teams.find(t => t.id === match.awayTeamId)
                 return (
                   <Card key={match.id} className="overflow-hidden border-red-200 bg-red-50/30 dark:bg-red-950/30">
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-6">
-                          <div className="text-center">
-                            <div className="text-sm text-muted-foreground mb-1">{awayTeam?.city}</div>
-                            <div className="font-bold text-lg">{awayTeam?.name}</div>
-                            <div className="text-3xl font-bold text-primary">{match.score?.away || 0}</div>
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 flex-1">
+                          <div className="text-center min-w-0 flex-1">
+                            <div className="text-sm text-muted-foreground mb-1 truncate">{awayTeam?.city}</div>
+                            <div className="font-bold text-base sm:text-lg truncate">{awayTeam?.name}</div>
+                            <div className="text-2xl sm:text-3xl font-bold text-primary">{match.score?.away || 0}</div>
                           </div>
-                          <div className="text-2xl font-bold text-muted-foreground">VS</div>
-                          <div className="text-center">
-                            <div className="text-sm text-muted-foreground mb-1">{homeTeam?.city}</div>
-                            <div className="font-bold text-lg">{homeTeam?.name}</div>
-                            <div className="text-3xl font-bold text-primary">{match.score?.home || 0}</div>
+                          
+                          <div className="text-xl sm:text-2xl font-bold text-muted-foreground px-2">VS</div>
+                          
+                          <div className="text-center min-w-0 flex-1">
+                            <div className="text-sm text-muted-foreground mb-1 truncate">{homeTeam?.city}</div>
+                            <div className="font-bold text-base sm:text-lg truncate">{homeTeam?.name}</div>
+                            <div className="text-2xl sm:text-3xl font-bold text-primary">{match.score?.home || 0}</div>
                           </div>
                         </div>
-                        <div className="text-center">
-                          <div className="flex items-center gap-2 mb-2">
+                        
+                        <div className="flex flex-col items-center gap-3 lg:min-w-fit">
+                          <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
                             <span className="text-sm font-medium text-red-600">LIVE</span>
                           </div>
-                          <div className="text-sm text-muted-foreground mb-3">{match.venue}</div>
-                          <Button asChild>
+                          <div className="text-sm text-muted-foreground text-center">{match.venue}</div>
+                          <Button asChild className="w-full sm:w-auto">
                             <Link href={`/live/${match.id}`}>
                               <Play className="w-4 h-4 mr-2" />
-                              Watch Live Simulation
+                              <span className="hidden sm:inline">Watch Live Simulation</span>
+                              <span className="sm:hidden">Watch Live</span>
                             </Link>
                           </Button>
                         </div>

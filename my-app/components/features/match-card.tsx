@@ -3,10 +3,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Calendar, MapPin, Users } from "lucide-react"
+import { Calendar, MapPin, Users, Play } from "lucide-react"
 import { Match, Team } from "@/lib/utils/data"
 import { formatDate, formatTime } from "@/lib/utils/data"
 import Image from "next/image"
+import Link from "next/link"
 
 interface MatchCardProps {
   match: Match
@@ -133,15 +134,24 @@ export function MatchCard({ match, homeTeam, awayTeam, className }: MatchCardPro
           </div>
         )}
 
-        <Button 
-          variant={isCompleted ? "outline" : isUpcoming ? "default" : "destructive"} 
-          className={`w-full`}
-          size="sm"
-        >
-          {isCompleted && "View Box Score"}
-          {isUpcoming && "Get Tickets"}
-          {isLive && "Watch Live"}
-        </Button>
+        {isCompleted && (
+          <Button variant="outline" className="w-full" size="sm">
+            View Box Score
+          </Button>
+        )}
+        {isUpcoming && (
+          <Button variant="default" className="w-full" size="sm">
+            Get Tickets
+          </Button>
+        )}
+        {isLive && (
+          <Button variant="destructive" className="w-full" size="sm" asChild>
+            <Link href={`/live/${match.id}`} className="flex items-center justify-center gap-2">
+              <Play className="w-4 h-4" />
+              Watch Live
+            </Link>
+          </Button>
+        )}
       </CardContent>
     </Card>
   )
