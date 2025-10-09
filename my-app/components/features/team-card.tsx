@@ -111,9 +111,9 @@ export function TeamCard({ team, rank, className }: TeamCardProps) {
             </div>
           </div>
 
-          <Link href={`/teams/${team.id}`} className="block">
+          <Link href={`/teams/${team.id}`} className="block cursor-pointer">
             <Button 
-              className="w-full bg-muted/50 hover:bg-primary text-muted-foreground hover:text-primary-foreground shadow-md shadow-gray-400/20 dark:shadow-gray-600/20 hover:shadow-lg hover:shadow-primary/30 dark:hover:shadow-primary/40 transition-all duration-300 border-0"
+              className="w-full bg-muted/50 hover:bg-primary text-muted-foreground hover:text-primary-foreground shadow-md shadow-gray-400/20 dark:shadow-gray-600/20 hover:shadow-lg hover:shadow-primary/30 dark:hover:shadow-primary/40 transition-all duration-300 border-0 cursor-pointer"
               size="sm"
             >
               View Team

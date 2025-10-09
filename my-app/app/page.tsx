@@ -13,6 +13,7 @@ import {
   ParallaxText
 } from "@/components/ui/animations"
 import Link from "next/link"
+import Image from "next/image"
 import { Suspense } from "react"
 
 function LoadingFallback() {
@@ -34,18 +35,33 @@ export default function HomePage() {
 
   return (
     <PageTransition className="flex flex-col">
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-accent min-h-[60vh] lg:min-h-[70vh]">
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-accent min-h-screen">
+        <div className="absolute inset-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url('/images/latest.jpeg')`,
+              filter: 'brightness(0.2) contrast(1.2)'
+            }}
+          />
+          <div className="absolute inset-0" />
+        </div>
+        
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 rounded-full border-4 border-secondary animate-bounce-subtle" />
+          <div className="absolute top-20 right-20 w-24 h-24 rounded-full border-2 border-accent animate-float" />
+          <div className="absolute bottom-20 left-20 w-20 h-20 rounded-full border-3 border-primary-foreground animate-pulse" />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32 flex items-center justify-center min-h-screen">
           <div className="mx-auto max-w-5xl text-center">
             <FloatingElement delay={0.2}>
-              <h1 className="text-3xl font-bold tracking-tight text-primary-foreground sm:text-5xl lg:text-6xl xl:text-7xl">
+              <h1 className="text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl drop-shadow-2xl">
                 <span className="block">Where Legends Rise</span>
               </h1>
             </FloatingElement>
             
             <FloatingElement delay={0.4}>
-              <ParallaxText className="mt-6 text-base leading-7 text-primary-foreground/90 sm:text-lg sm:leading-8 lg:text-xl lg:leading-9 max-w-4xl mx-auto text-balance">
+              <ParallaxText className="mt-6 text-base leading-7 text-white/95 sm:text-lg sm:leading-8 lg:text-xl lg:leading-9 max-w-4xl mx-auto text-balance drop-shadow-lg">
                 The premier basketball league bringing together the finest talent from across West Africa. 
                 8 teams, 96 players, one championship dream.
               </ParallaxText>
@@ -54,18 +70,18 @@ export default function HomePage() {
             <FloatingElement delay={0.6}>
               <StaggerContainer className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-x-6">
                 <StaggerItem>
-                  <Link href="/teams">
-                    <HoverScale>
-                      <Button size="xl" variant="secondary" className="text-primary w-full sm:w-auto min-w-[160px]">
+                  <Link href="/teams" className="cursor-pointer">
+                    <HoverScale scale={1.05} tapScale={0.95}>
+                      <Button size="xl" className="bg-gradient-to-r from-yellow-500 to-yellow-400 text-black hover:from-yellow-400 hover:to-yellow-300 w-full sm:w-auto min-w-[200px] px-8 py-4 text-lg font-bold shadow-2xl hover:shadow-yellow-500/50 cursor-pointer transform transition-all duration-300 animate-pulse-glow border-2 border-yellow-400/50 hover:border-yellow-300">
                         View Teams
                       </Button>
                     </HoverScale>
                   </Link>
                 </StaggerItem>
                 <StaggerItem>
-                  <Link href="/schedule">
-                    <HoverScale>
-                      <Button size="xl" variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-background hover:text-primary w-full sm:w-auto min-w-[160px]">
+                  <Link href="/schedule" className="cursor-pointer">
+                    <HoverScale scale={1.05} tapScale={0.95}>
+                      <Button size="xl" variant="outline" className="text-white border-2 border-white hover:bg-white hover:text-black w-full sm:w-auto min-w-[200px] px-8 py-4 text-lg font-bold cursor-pointer shadow-2xl hover:shadow-white/30 backdrop-blur-sm bg-white/10 transition-all duration-300 hover:scale-105">
                         View Schedule
                       </Button>
                     </HoverScale>
@@ -81,6 +97,68 @@ export default function HomePage() {
         <section className="py-12 lg:py-16 bg-background">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <QuickStats teams={teams} />
+          </div>
+        </section>
+      </RevealOnScroll>
+
+      <RevealOnScroll direction="up" delay={0.1}>
+        <section className="py-16 lg:py-20 bg-muted/20 relative overflow-hidden">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <ParallaxText>
+                  <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl mb-6 font-display">
+                    Elite Basketball
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                    Experience the intensity, skill, and passion that defines West African basketball. 
+                    From thunderous dunks to clutch three-pointers, WABL delivers world-class basketball entertainment.
+                  </p>
+                  <div className="grid grid-cols-2 gap-6 mb-8">
+                    <div className="text-center p-4 bg-primary/5 rounded-lg">
+                      <div className="text-2xl font-bold text-primary font-sport">96</div>
+                      <div className="text-sm text-muted-foreground">Elite Players</div>
+                    </div>
+                    <div className="text-center p-4 bg-secondary/5 rounded-lg">
+                      <div className="text-2xl font-bold text-secondary font-sport">8</div>
+                      <div className="text-sm text-muted-foreground">Cities</div>
+                    </div>
+                  </div>
+                </ParallaxText>
+                <Link href="/teams">
+                  <HoverScale>
+                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-sport cursor-pointer">
+                      Explore Teams →
+                    </Button>
+                  </HoverScale>
+                </Link>
+              </div>
+              
+              <div className="relative">
+                <FloatingElement delay={0.3}>
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <Image 
+                      src="/images/latest.jpeg" 
+                      alt="WABL Basketball Action" 
+                      width={600}
+                      height={400}
+                      className="w-full h-[400px] object-cover"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <div className="bg-black/50 backdrop-blur-sm rounded-lg p-4 text-white">
+                        <div className="text-sm font-medium opacity-90">West African Basketball League</div>
+                        <div className="text-lg font-bold font-sport">Where Champions Are Made</div>
+                      </div>
+                    </div>
+                  </div>
+                </FloatingElement>
+                
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-secondary/20 rounded-full blur-xl" />
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-accent/20 rounded-full blur-xl" />
+              </div>
+            </div>
           </div>
         </section>
       </RevealOnScroll>
@@ -211,18 +289,18 @@ export default function HomePage() {
             <div className="text-center">
               <StaggerContainer className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <StaggerItem>
-                  <Link href="/schedule">
+                  <Link href="/schedule" className="cursor-pointer">
                     <HoverScale>
-                      <Button size="xl" variant="secondary" className="text-primary bg-primary-foreground hover:bg-primary-foreground/90 min-w-[180px]">
+                      <Button size="xl" variant="secondary" className="text-primary bg-primary-foreground hover:bg-primary-foreground/90 min-w-[180px] cursor-pointer">
                         View Live Games
                       </Button>
                     </HoverScale>
                   </Link>
                 </StaggerItem>
                 <StaggerItem>
-                  <Link href="/stats">
+                  <Link href="/stats" className="cursor-pointer">
                     <HoverScale>
-                      <Button size="xl" variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary min-w-[180px]">
+                      <Button size="xl" variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary min-w-[180px] cursor-pointer">
                         Player Rankings
                       </Button>
                     </HoverScale>

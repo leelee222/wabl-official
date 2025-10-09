@@ -203,8 +203,8 @@ export default function TeamPage({ params }: TeamPageProps) {
             <h3 className="text-lg font-semibold mb-4">Top Scorers</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {topScorers.map((player, index) => (
-                <Link key={player.id} href={`/players/${player.id}`} className="block group">
-                  <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group-hover:border-primary/50">
+                <Link key={player.id} href={`/players/${player.id}`} className="block group cursor-pointer">
+                  <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group-hover:border-primary/50 cursor-pointer">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="relative w-12 h-12 rounded-full overflow-hidden bg-muted">

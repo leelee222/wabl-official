@@ -98,8 +98,8 @@ export function StandingsPreview({ teams, limit = 4, showFullButton = true, clas
         
         {showFullButton && (
           <div className="mt-6 pt-4">
-            <Link href="/standings">
-              <Button className="w-full bg-muted/50 hover:bg-primary text-muted-foreground hover:text-primary-foreground shadow-md shadow-gray-400/20 dark:shadow-gray-600/20 hover:shadow-lg hover:shadow-primary/30 dark:hover:shadow-primary/40 transition-all duration-300 border-0">
+            <Link href="/standings" className="cursor-pointer">
+              <Button className="w-full bg-muted/50 hover:bg-primary text-muted-foreground hover:text-primary-foreground shadow-md shadow-gray-400/20 dark:shadow-gray-600/20 hover:shadow-lg hover:shadow-primary/30 dark:hover:shadow-primary/40 transition-all duration-300 border-0 cursor-pointer">
                 View Full Standings
               </Button>
             </Link>

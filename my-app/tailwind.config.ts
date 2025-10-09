@@ -59,8 +59,11 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)"],
-        mono: ["var(--font-jetbrains-mono)"],
+        sans: ["Exo 2", "Rajdhani", "system-ui", "sans-serif"],
+        display: ["Orbitron", "Exo 2", "sans-serif"],
+        sport: ["Rajdhani", "Exo 2", "sans-serif"],
+        athletic: ["Exo 2", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "monospace"],
       },
       keyframes: {
         "accordion-down": {

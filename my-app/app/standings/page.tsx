@@ -140,6 +140,35 @@ export default function StandingsPage() {
         </div>
       </section>
 
+       <section className="py-8 bg-muted/30">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Card>
+            <CardContent className="p-6">
+              <h3 className="font-semibold mb-4">Legend</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <Crown className="h-4 w-4 text-yellow-500" />
+                  <span>League Leader</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Target className="h-4 w-4 text-green-600" />
+                  <span>Playoff Position (Top 4)</span>
+                </div>
+                <div><strong>GP:</strong> Games Played</div>
+                <div><strong>W:</strong> Wins</div>
+                <div><strong>L:</strong> Losses</div>
+                <div><strong>PCT:</strong> Win Percentage</div>
+                <div><strong>PF:</strong> Points For (Average)</div>
+                <div><strong>PA:</strong> Points Against (Average)</div>
+                <div><strong>DIFF:</strong> Point Differential</div>
+                <div><strong>STRK:</strong> Current Streak</div>
+                <div><strong>L5:</strong> Last 5 Games</div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       <section className="py-12 lg:py-16 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Card>
@@ -259,35 +288,6 @@ export default function StandingsPage() {
                     })}
                   </tbody>
                 </table>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-8 bg-muted/30">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Card>
-            <CardContent className="p-6">
-              <h3 className="font-semibold mb-4">Legend</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
-                <div className="flex items-center gap-2">
-                  <Crown className="h-4 w-4 text-yellow-500" />
-                  <span>League Leader</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Target className="h-4 w-4 text-green-600" />
-                  <span>Playoff Position (Top 4)</span>
-                </div>
-                <div><strong>GP:</strong> Games Played</div>
-                <div><strong>W:</strong> Wins</div>
-                <div><strong>L:</strong> Losses</div>
-                <div><strong>PCT:</strong> Win Percentage</div>
-                <div><strong>PF:</strong> Points For (Average)</div>
-                <div><strong>PA:</strong> Points Against (Average)</div>
-                <div><strong>DIFF:</strong> Point Differential</div>
-                <div><strong>STRK:</strong> Current Streak</div>
-                <div><strong>L5:</strong> Last 5 Games</div>
               </div>
             </CardContent>
           </Card>
