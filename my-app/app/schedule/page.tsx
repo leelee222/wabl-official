@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Calendar, Trophy, Filter, Download, ChevronLeft, ChevronRight, Play } from "lucide-react"
 import { useState, useMemo } from "react"
 import { format, startOfWeek, endOfWeek, eachDayOfInterval, addWeeks, subWeeks, parseISO, isSameDay } from "date-fns"
+import Image from "next/image"
 
 export default function SchedulePage() {
   const matches = getMatches()
@@ -77,7 +78,16 @@ END:VCALENDAR`
   return (
     <div className="flex flex-col">
       <section className="relative overflow-hidden bg-gradient-to-br from-primary to-accent py-16 lg:py-20">
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0">
+          <Image
+            src="/images/schedule.jpg"
+            alt="WABL Schedule"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-accent/80" />
+        </div>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <div className="flex items-center justify-center mb-6">

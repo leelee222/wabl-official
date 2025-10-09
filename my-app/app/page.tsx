@@ -72,7 +72,7 @@ export default function HomePage() {
                 <StaggerItem>
                   <Link href="/teams" className="cursor-pointer">
                     <HoverScale scale={1.05} tapScale={0.95}>
-                      <Button size="xl" className="bg-gradient-to-r from-yellow-500 to-yellow-400 text-black hover:from-yellow-400 hover:to-yellow-300 w-full sm:w-auto min-w-[200px] px-8 py-4 text-lg font-bold shadow-2xl hover:shadow-yellow-500/50 cursor-pointer transform transition-all duration-300 animate-pulse-glow border-2 border-yellow-400/50 hover:border-yellow-300">
+                      <Button size="xl" className="bg-gradient-to-r from-yellow-500 to-yellow-400 text-black hover:from-yellow-400 hover:to-yellow-300 w-full sm:w-auto min-w-[200px] px-8 py-4 text-lg font-bold shadow-2xl hover:shadow-yellow-500/50 cursor-pointer transform transition-all duration-300 animate-pulse-glow">
                         View Teams
                       </Button>
                     </HoverScale>
@@ -81,7 +81,7 @@ export default function HomePage() {
                 <StaggerItem>
                   <Link href="/schedule" className="cursor-pointer">
                     <HoverScale scale={1.05} tapScale={0.95}>
-                      <Button size="xl" variant="outline" className="text-white border-2 border-white hover:bg-white hover:text-black w-full sm:w-auto min-w-[200px] px-8 py-4 text-lg font-bold cursor-pointer shadow-2xl hover:shadow-white/30 backdrop-blur-sm bg-white/10 transition-all duration-300 hover:scale-105">
+                      <Button size="xl" className="bg-white/20 text-white hover:bg-white hover:text-black w-full sm:w-auto min-w-[200px] px-8 py-4 text-lg font-bold cursor-pointer shadow-2xl hover:shadow-white/30 backdrop-blur-sm transition-all duration-300 hover:scale-105">
                         View Schedule
                       </Button>
                     </HoverScale>
@@ -233,7 +233,16 @@ export default function HomePage() {
 
       <RevealOnScroll direction="up" delay={0.4}>
         <section className="bg-gradient-to-r from-primary to-accent py-16 lg:py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute inset-0">
+            <Image
+              src="/images/down.jpg"
+              alt="WABL Never Miss a Game"
+              fill
+              className="object-cover opacity-20"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-accent/80" />
+          </div>
           <div className="absolute inset-0">
             <div className="absolute top-10 left-10 w-32 h-32 bg-secondary/20 rounded-full blur-xl" />
             <div className="absolute bottom-10 right-10 w-40 h-40 bg-accent/20 rounded-full blur-xl" />
