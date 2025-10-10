@@ -41,7 +41,7 @@ export default function HomePage() {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: `url('/images/latest.jpeg')`,
-              filter: 'brightness(0.2) contrast(1.2)'
+              // filter: 'brightness(0.2)'
             }}
           />
           <div className="absolute inset-0" />
@@ -238,7 +238,7 @@ export default function HomePage() {
               src="/images/down.jpg"
               alt="WABL Never Miss a Game"
               fill
-              className="object-cover opacity-20"
+              className="object-cover"
               sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-accent/80" />
