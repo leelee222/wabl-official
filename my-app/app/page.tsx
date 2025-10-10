@@ -238,7 +238,7 @@ export default function HomePage() {
               src="/images/down.jpg"
               alt="WABL Never Miss a Game"
               fill
-              className="object-cover"
+              className="object-cover opacity-20"
               sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-accent/80" />
