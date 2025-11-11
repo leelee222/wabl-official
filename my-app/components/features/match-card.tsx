@@ -22,9 +22,9 @@ export function MatchCard({ match, homeTeam, awayTeam, className }: MatchCardPro
   const isLive = match.status === 'live'
 
   const getStatusBadge = () => {
-    if (isCompleted) return <Badge variant="success" className="animate-score-pop">🏁 Final</Badge>
-    if (isLive) return <Badge variant="destructive" className="animate-pulse game-time-glow">🔴 LIVE</Badge>
-    return <Badge variant="outline" className="animate-basketball-bounce">📅 Upcoming</Badge>
+    if (isCompleted) return <Badge variant="success">🏁 Final</Badge>
+    if (isLive) return <Badge variant="destructive" className="animate-pulse">🔴 LIVE</Badge>
+    return <Badge variant="outline">📅 Upcoming</Badge>
   }
 
   const getStatusColor = () => {
@@ -34,7 +34,7 @@ export function MatchCard({ match, homeTeam, awayTeam, className }: MatchCardPro
   }
 
   return (
-    <Card className={`border-0 basketball-card hover-slam-dunk hover:shadow-xl transition-all duration-300 hover:scale-[1.02] ${getStatusColor()} ${className}`}>
+    <Card className={`border-0 hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:-translate-y-1 ${getStatusColor()} ${className}`}>
       <CardHeader className="pb-6">
         <div className="flex items-center justify-between mb-4">
           {getStatusBadge()}
@@ -44,7 +44,7 @@ export function MatchCard({ match, homeTeam, awayTeam, className }: MatchCardPro
           </div>
         </div>
         
-        <CardTitle className={`text-lg sm:text-xl leading-tight text-center mb-3 ${isLive ? 'animate-buzzer-beater' : ''}`}>
+        <CardTitle className={`text-lg sm:text-xl leading-tight text-center mb-3`}>
           {homeTeam.name} 🏀 vs 🏀 {awayTeam.name}
         </CardTitle>
         
@@ -63,13 +63,13 @@ export function MatchCard({ match, homeTeam, awayTeam, className }: MatchCardPro
       <CardContent>
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-3 flex-1 min-w-0">
-            <div className="relative w-8 h-8 rounded-full overflow-hidden flex-shrink-0 hover:animate-spin-ball">
+            <div className="relative w-8 h-8 rounded-full overflow-hidden flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
               <Image
                 src={homeTeam.logo}
                 alt={`${homeTeam.name} logo`}
                 width={32}
                 height={32}
-                className="object-cover hover:scale-110 transition-transform"
+                className="object-cover transition-transform"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
@@ -89,28 +89,28 @@ export function MatchCard({ match, homeTeam, awayTeam, className }: MatchCardPro
           <div className="px-4 text-center">
             {isCompleted && match.score ? (
               <div className="flex items-center space-x-3 text-xl sm:text-2xl font-bold">
-                <span className={`${match.score.home > match.score.away ? 'text-primary animate-score-pop' : 'text-muted-foreground'}`}>
+                <span className={`${match.score.home > match.score.away ? 'text-primary' : 'text-muted-foreground'}`}>
                   {match.score.home}
                 </span>
                 <span className="text-sm text-muted-foreground">-</span>
-                <span className={`${match.score.away > match.score.home ? 'text-primary animate-score-pop' : 'text-muted-foreground'}`}>
+                <span className={`${match.score.away > match.score.home ? 'text-primary' : 'text-muted-foreground'}`}>
                   {match.score.away}
                 </span>
               </div>
             ) : (
-              <span className="text-lg font-semibold text-muted-foreground hover:animate-dribble">🏀 VS</span>
+              <span className="text-lg font-semibold text-muted-foreground">🏀 VS</span>
             )}
           </div>
           
           <div className="flex items-center space-x-3 flex-1 min-w-0 justify-end">
             <span className="font-medium truncate text-sm text-right">{awayTeam.city}</span>
-            <div className="relative w-8 h-8 rounded-full overflow-hidden flex-shrink-0 hover:animate-spin-ball">
+            <div className="relative w-8 h-8 rounded-full overflow-hidden flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
               <Image
                 src={awayTeam.logo}
                 alt={`${awayTeam.name} logo`}
                 width={32}
                 height={32}
-                className="object-cover hover:scale-110 transition-transform"
+                className="object-cover transition-transform"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
@@ -128,26 +128,26 @@ export function MatchCard({ match, homeTeam, awayTeam, className }: MatchCardPro
         </div>
 
         {isCompleted && match.attendance && (
-          <div className="flex items-center justify-center text-xs text-muted-foreground mb-4 hover:animate-crowd-wave">
+          <div className="flex items-center justify-center text-xs text-muted-foreground mb-4">
             <Users className="h-3 w-3 mr-1" />
             <span>👥 {match.attendance.toLocaleString()} attendance</span>
           </div>
         )}
 
         {isCompleted && (
-          <Button variant="outline" className="w-full basketball-card hover-basketball-bounce" size="sm">
+          <Button variant="outline" className="w-full hover:scale-105 transition-transform duration-300" size="sm">
             📊 View Box Score
           </Button>
         )}
         {isUpcoming && (
-          <Button variant="default" className="w-full basketball-card hover-slam-dunk" size="sm">
+          <Button variant="default" className="w-full hover:scale-105 transition-transform duration-300" size="sm">
             🎟️ Get Tickets
           </Button>
         )}
         {isLive && (
-          <Button variant="destructive" className="w-full game-time-glow animate-hype-pulse" size="sm" asChild>
+          <Button variant="destructive" className="w-full animate-pulse hover:scale-105 transition-transform duration-300" size="sm" asChild>
             <Link href={`/live/${match.id}`} className="flex items-center justify-center gap-2">
-              <Play className="w-4 h-4 animate-fast-break" />
+              <Play className="w-4 h-4" />
               🔥 Watch Live
             </Link>
           </Button>
