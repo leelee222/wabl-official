@@ -16,14 +16,14 @@ export function PlayerCard({ player, team }: PlayerCardProps) {
       href={`/players/${player.id}`}
       className="block group"
     >
-      <div className="flex items-center justify-between p-3 rounded-lg border group-hover:border-primary/50 group-hover:bg-muted/50 transition-all duration-200 cursor-pointer">
+      <div className="flex items-center justify-between p-3 rounded-lg border basketball-card hover-crossover group-hover:border-primary/50 group-hover:bg-muted/50 transition-all duration-200 cursor-pointer">
         <div className="flex items-center gap-3">
-          <div className="relative w-10 h-10 rounded-full overflow-hidden bg-muted flex-shrink-0">
+          <div className="relative w-10 h-10 rounded-full overflow-hidden bg-muted flex-shrink-0 group-hover:animate-basketball-bounce">
             <Image
               src={player.photo}
               alt={player.name}
               fill
-              className="object-cover group-hover:scale-110 transition-transform duration-200"
+              className="object-cover group-hover:scale-110 group-hover:animate-spin-ball transition-transform duration-200"
               sizes="40px"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -43,24 +43,24 @@ export function PlayerCard({ player, team }: PlayerCardProps) {
             </div>
           </div>
           <div>
-            <p className="font-medium group-hover:text-primary transition-colors">
+            <p className="font-medium group-hover:text-primary transition-colors group-hover:animate-buzzer-beater">
               {player.name}
             </p>
             <p className="text-sm text-muted-foreground">
-              #{player.number} • {player.position}
+              #{player.number} 🏀 {player.position}
             </p>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <div className="text-right">
-            <p className="text-sm font-medium">
-              {player.stats.ppg} PPG
+            <p className="text-sm font-medium group-hover:animate-score-pop">
+              {player.stats.ppg} PPG 🔥
             </p>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-muted-foreground group-hover:animate-net-shake">
               {player.stats.rpg} RPG • {player.stats.apg} APG
             </p>
           </div>
-          <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+          <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors group-hover:animate-fast-break" />
         </div>
       </div>
     </Link>

@@ -399,6 +399,333 @@ p {
   }
 }
 
+/* 🏀 BASKETBALL ANIMATIONS - Fun & Energetic! */
+
+/* Basketball bounce effect - realistic ball physics */
+@keyframes basketball-bounce {
+  0% {
+    transform: translateY(0) scale(1, 1);
+    animation-timing-function: cubic-bezier(0.3, 0, 0.7, 1);
+  }
+  25% {
+    transform: translateY(-40px) scale(1.1, 0.9);
+    animation-timing-function: cubic-bezier(0.3, 0, 0.7, 1);
+  }
+  50% {
+    transform: translateY(0) scale(1, 1);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+  60% {
+    transform: translateY(-20px) scale(1.05, 0.95);
+  }
+  75% {
+    transform: translateY(0) scale(1, 1);
+  }
+  85% {
+    transform: translateY(-10px) scale(1.02, 0.98);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+/* Dribble effect - continuous bouncing */
+@keyframes dribble {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-30px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(0) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(270deg);
+  }
+}
+
+/* Spin animation - ball spinning */
+@keyframes spin-ball {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Swish effect - smooth arc motion */
+@keyframes swish {
+  0% {
+    transform: translateY(100px) translateX(-50px) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50px) translateX(0) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-150px) translateX(50px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Slam dunk - powerful downward motion */
+@keyframes slam-dunk {
+  0% {
+    transform: translateY(-100px) scale(1) rotate(0deg);
+  }
+  60% {
+    transform: translateY(0) scale(1.2, 0.8) rotate(15deg);
+  }
+  70% {
+    transform: translateY(-5px) scale(1.1, 0.9) rotate(0deg);
+  }
+  80% {
+    transform: translateY(0) scale(1.05, 0.95) rotate(-5deg);
+  }
+  90% {
+    transform: translateY(-2px) scale(1.02, 0.98) rotate(0deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+/* Score pop - exciting score reveal */
+@keyframes score-pop {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.3) rotate(10deg);
+  }
+  70% {
+    transform: scale(0.9) rotate(-5deg);
+  }
+  85% {
+    transform: scale(1.05) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Net shake - basket net shaking after score */
+@keyframes net-shake {
+  0%, 100% {
+    transform: rotate(0deg) translateX(0);
+  }
+  10% {
+    transform: rotate(2deg) translateX(2px);
+  }
+  20% {
+    transform: rotate(-2deg) translateX(-2px);
+  }
+  30% {
+    transform: rotate(1.5deg) translateX(1.5px);
+  }
+  40% {
+    transform: rotate(-1.5deg) translateX(-1.5px);
+  }
+  50% {
+    transform: rotate(1deg) translateX(1px);
+  }
+  60% {
+    transform: rotate(-1deg) translateX(-1px);
+  }
+  70% {
+    transform: rotate(0.5deg) translateX(0.5px);
+  }
+  80% {
+    transform: rotate(-0.5deg) translateX(-0.5px);
+  }
+}
+
+/* Court lines sweep */
+@keyframes court-sweep {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* Crossover - quick side-to-side movement */
+@keyframes crossover {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-20px) rotate(-10deg);
+  }
+  50% {
+    transform: translateX(20px) rotate(10deg);
+  }
+  75% {
+    transform: translateX(-10px) rotate(-5deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+/* Fast break - speed burst effect */
+@keyframes fast-break {
+  0% {
+    transform: translateX(-100%) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Buzzer beater - dramatic final shot */
+@keyframes buzzer-beater {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  10% {
+    transform: scale(1.1);
+    filter: brightness(1.3);
+  }
+  20% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  30% {
+    transform: scale(1.15);
+    filter: brightness(1.5);
+  }
+  40% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.2);
+    filter: brightness(1.8) saturate(1.5);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+/* Alley-oop arc */
+@keyframes alley-oop {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+  }
+  30% {
+    transform: translateY(-60px) translateX(30px) rotate(180deg) scale(1.1);
+  }
+  60% {
+    transform: translateY(-80px) translateX(60px) rotate(360deg) scale(1.2);
+  }
+  100% {
+    transform: translateY(0) translateX(100px) rotate(540deg) scale(0.9);
+  }
+}
+
+/* Three-pointer arc - long range shot */
+@keyframes three-pointer {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-120px) translateX(50px) scale(1);
+  }
+  70% {
+    transform: translateY(-100px) translateX(100px) scale(0.95);
+  }
+  100% {
+    transform: translateY(0) translateX(150px) scale(0.7);
+    opacity: 0;
+  }
+}
+
+/* Crowd wave effect */
+@keyframes crowd-wave {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  10% {
+    transform: translateY(-5px) scale(1.05);
+  }
+  20% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Hype pulse - gets everyone excited */
+@keyframes hype-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 20px rgba(212, 175, 55, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
+}
+
+/* Jersey number flip */
+@keyframes jersey-flip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(90deg);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Spotlight sweep */
+@keyframes spotlight {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out;
 }
@@ -439,6 +766,209 @@ p {
 
 .animate-wiggle {
   animation: wiggle 1s ease-in-out;
+}
+
+/* 🏀 BASKETBALL ANIMATION CLASSES */
+
+.animate-basketball-bounce {
+  animation: basketball-bounce 1.5s ease-in-out infinite;
+}
+
+.animate-dribble {
+  animation: dribble 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-spin-ball {
+  animation: spin-ball 2s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-swish {
+  animation: swish 1.5s ease-out;
+}
+
+.animate-slam-dunk {
+  animation: slam-dunk 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-score-pop {
+  animation: score-pop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.animate-net-shake {
+  animation: net-shake 0.8s ease-in-out;
+}
+
+.animate-crossover {
+  animation: crossover 0.6s ease-in-out;
+}
+
+.animate-fast-break {
+  animation: fast-break 2s ease-in-out;
+}
+
+.animate-buzzer-beater {
+  animation: buzzer-beater 1s ease-in-out;
+}
+
+.animate-alley-oop {
+  animation: alley-oop 2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-three-pointer {
+  animation: three-pointer 2s ease-out;
+}
+
+.animate-crowd-wave {
+  animation: crowd-wave 0.8s ease-in-out;
+}
+
+.animate-hype-pulse {
+  animation: hype-pulse 1.5s ease-in-out infinite;
+}
+
+.animate-jersey-flip {
+  animation: jersey-flip 0.8s ease-in-out;
+}
+
+.animate-spotlight {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  background-size: 200% 100%;
+  animation: spotlight 3s ease-in-out infinite;
+}
+
+/* 🏀 HOVER EFFECTS - Make it interactive! */
+
+.hover-basketball-bounce:hover {
+  animation: basketball-bounce 1s ease-in-out;
+}
+
+.hover-dribble:hover {
+  animation: dribble 0.8s ease-in-out;
+}
+
+.hover-slam-dunk:hover {
+  animation: slam-dunk 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hover-crossover:hover {
+  animation: crossover 0.5s ease-in-out;
+}
+
+.hover-score-pop:hover {
+  animation: score-pop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-buzzer-beater:hover {
+  animation: buzzer-beater 0.8s ease-in-out;
+}
+
+.hover-hype-pulse:hover {
+  animation: hype-pulse 1s ease-in-out;
+}
+
+/* 🏀 GROUP ANIMATIONS - Stagger for wave effects */
+
+.animation-delay-100,
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-150,
+.animate-delay-150 {
+  animation-delay: 150ms;
+}
+
+.animation-delay-200,
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300,
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-400,
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-500,
+.animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+/* 🏀 BASKETBALL-THEMED INTERACTIVE CARDS */
+
+.basketball-card {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.basketball-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.basketball-card:hover::before {
+  opacity: 1;
+  animation: spin-ball 3s linear infinite;
+}
+
+.basketball-card:hover {
+  transform: translateY(-12px) scale(1.03) rotate(2deg);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.2), 
+              0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+.basketball-card:active {
+  transform: translateY(-8px) scale(0.98);
+  transition: all 0.1s ease;
+  animation: net-shake 0.3s ease-in-out;
+}
+
+/* 🏀 GAME-TIME EFFECTS */
+
+.game-time-glow {
+  animation: buzzer-beater 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.victory-celebration {
+  animation: score-pop 0.6s ease-out, hype-pulse 1.5s ease-in-out infinite 0.6s;
+}
+
+.on-fire {
+  animation: buzzer-beater 0.5s ease-in-out infinite;
+  filter: brightness(1.2) saturate(1.3);
+}
+
+/* 🏀 BASKETBALL TEXTURE PATTERN */
+
+.basketball-texture {
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(232, 93, 4, 0.1) 0%, transparent 50%);
+  background-size: 100px 100px;
+  animation: spotlight 6s ease-in-out infinite;
 }
 
 /* Hover effects */

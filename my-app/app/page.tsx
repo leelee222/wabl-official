@@ -12,6 +12,10 @@ import {
   RevealOnScroll,
   ParallaxText
 } from "@/components/ui/animations"
+import { 
+  BouncingBasketballs, 
+  CourtLines,  
+} from "@/components/animations/basketball-animations"
 import Link from "next/link"
 import Image from "next/image"
 import { Suspense } from "react"
@@ -36,6 +40,10 @@ export default function HomePage() {
   return (
     <PageTransition className="flex flex-col">
       <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-accent min-h-screen">
+        <BouncingBasketballs />
+        
+        <CourtLines className="opacity-30" />
+        
         <div className="absolute inset-0">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -48,15 +56,18 @@ export default function HomePage() {
         </div>
         
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-32 h-32 rounded-full border-4 border-secondary animate-bounce-subtle" />
+          <div className="absolute top-10 left-10 w-32 h-32 rounded-full border-4 border-secondary animate-basketball-bounce" />
           <div className="absolute top-20 right-20 w-24 h-24 rounded-full border-2 border-accent animate-float" />
           <div className="absolute bottom-20 left-20 w-20 h-20 rounded-full border-3 border-primary-foreground animate-pulse" />
+          <div className="absolute bottom-10 right-10 text-4xl animate-dribble opacity-30">🏀</div>
+          <div className="absolute top-40 left-1/4 text-3xl animate-spin-ball opacity-20">🏀</div>
+          <div className="absolute bottom-40 right-1/4 text-3xl animate-basketball-bounce opacity-20" style={{ animationDelay: '0.5s' }}>🏀</div>
         </div>
         <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32 flex items-center justify-center min-h-screen">
           <div className="mx-auto max-w-5xl text-center">
             <FloatingElement delay={0.2}>
               <h1 className="text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl drop-shadow-2xl">
-                <span className="block">Where Legends Rise</span>
+                <span className="block animate-buzzer-beater">Where Legends Rise</span>
               </h1>
             </FloatingElement>
             
@@ -72,8 +83,8 @@ export default function HomePage() {
                 <StaggerItem>
                   <Link href="/teams" className="cursor-pointer">
                     <HoverScale scale={1.05} tapScale={0.95}>
-                      <Button size="xl" className="bg-gradient-to-r from-yellow-500 to-yellow-400 text-black hover:from-yellow-400 hover:to-yellow-300 w-full sm:w-auto min-w-[200px] px-8 py-4 text-lg font-bold shadow-2xl hover:shadow-yellow-500/50 cursor-pointer transform transition-all duration-300 animate-pulse-glow">
-                        View Teams
+                      <Button size="xl" className="basketball-card bg-gradient-to-r from-yellow-500 to-yellow-400 text-black hover:from-yellow-400 hover:to-yellow-300 w-full sm:w-auto min-w-[200px] px-8 py-4 text-lg font-bold shadow-2xl hover:shadow-yellow-500/50 cursor-pointer transform transition-all duration-300 animate-hype-pulse">
+                        🏀 View Teams
                       </Button>
                     </HoverScale>
                   </Link>
@@ -81,8 +92,8 @@ export default function HomePage() {
                 <StaggerItem>
                   <Link href="/schedule" className="cursor-pointer">
                     <HoverScale scale={1.05} tapScale={0.95}>
-                      <Button size="xl" className="bg-white/20 text-white hover:bg-white hover:text-black w-full sm:w-auto min-w-[200px] px-8 py-4 text-lg font-bold cursor-pointer shadow-2xl hover:shadow-white/30 backdrop-blur-sm transition-all duration-300 hover:scale-105">
-                        View Schedule
+                      <Button size="xl" className="hover-basketball-bounce bg-white/20 text-white hover:bg-white hover:text-black w-full sm:w-auto min-w-[200px] px-8 py-4 text-lg font-bold cursor-pointer shadow-2xl hover:shadow-white/30 backdrop-blur-sm transition-all duration-300 hover:scale-105">
+                        📅 View Schedule
                       </Button>
                     </HoverScale>
                   </Link>

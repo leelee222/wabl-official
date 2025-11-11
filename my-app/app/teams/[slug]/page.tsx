@@ -20,7 +20,7 @@ export default function TeamPage({ params }: TeamPageProps) {
   const router = useRouter()
   
   const teams = getTeams()
-  const team = teams.find(t => t.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') === slug)
+  const team = teams.find(t => t.id === slug)
   
   if (!team) {
     notFound()

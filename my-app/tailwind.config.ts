@@ -108,6 +108,39 @@ const config: Config = {
             opacity: "1",
           },
         },
+        "bounce-basketball": {
+          "0%": {
+            transform: "translateY(0) scale(1, 1)",
+          },
+          "25%": {
+            transform: "translateY(-40px) scale(1.1, 0.9)",
+          },
+          "50%": {
+            transform: "translateY(0) scale(1, 1)",
+          },
+          "60%": {
+            transform: "translateY(-20px) scale(1.05, 0.95)",
+          },
+          "75%": {
+            transform: "translateY(0) scale(1, 1)",
+          },
+          "85%": {
+            transform: "translateY(-10px) scale(1.02, 0.98)",
+          },
+          "100%": {
+            transform: "translateY(0) scale(1, 1)",
+          },
+        },
+        "bounce-slow": {
+          "0%, 100%": {
+            transform: "translateY(0)",
+            animationTimingFunction: "cubic-bezier(0.8, 0, 1, 1)",
+          },
+          "50%": {
+            transform: "translateY(-10px)",
+            animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -115,6 +148,8 @@ const config: Config = {
         "fade-in-up": "fadeInUp 0.6s ease-out",
         "slide-in-left": "slideInLeft 0.5s ease-out",
         "count-up": "countUp 0.8s ease-out",
+        "bounce-basketball": "bounce-basketball 1.5s ease-in-out infinite",
+        "bounce-slow": "bounce-slow 2s ease-in-out infinite",
       },
     },
   },
