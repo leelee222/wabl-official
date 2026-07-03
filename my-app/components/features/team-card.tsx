@@ -101,9 +101,9 @@ export function TeamCard({ team, rank, className }: TeamCardProps) {
                 </div>
               </div>
             </div>
-            <div className="text-4xl group-hover:animate-bounce-slow">
+            {/* <div className="text-4xl group-hover:animate-bounce-slow">
               🔥
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -124,9 +124,9 @@ export function TeamCard({ team, rank, className }: TeamCardProps) {
                   </div>
                 </div>
               </div>
-              <div className="text-3xl group-hover:scale-125 transition-transform duration-300">
+              {/* <div className="text-3xl group-hover:scale-125 transition-transform duration-300">
                 ⭐
-              </div>
+              </div> */}
             </div>
           </div>
         )}
