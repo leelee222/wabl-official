@@ -1,0 +1,578 @@
+[
+  {
+    "id": "player-001",
+    "name": "Adebayo Okafor",
+    "team": "Lagos Lions",
+    "file": "player-001.svg"
+  },
+  {
+    "id": "player-002",
+    "name": "Emmanuel Chukwu",
+    "team": "Lagos Lions",
+    "file": "player-002.svg"
+  },
+  {
+    "id": "player-003",
+    "name": "Ikechukwu Nwosu",
+    "team": "Lagos Lions",
+    "file": "player-003.svg"
+  },
+  {
+    "id": "player-004",
+    "name": "Olumide Adebisi",
+    "team": "Lagos Lions",
+    "file": "player-004.svg"
+  },
+  {
+    "id": "player-005",
+    "name": "Tunde Bankole",
+    "team": "Lagos Lions",
+    "file": "player-005.svg"
+  },
+  {
+    "id": "player-006",
+    "name": "Kemi Adeleke",
+    "team": "Lagos Lions",
+    "file": "player-006.svg"
+  },
+  {
+    "id": "player-007",
+    "name": "Victor Osimhen",
+    "team": "Lagos Lions",
+    "file": "player-007.svg"
+  },
+  {
+    "id": "player-008",
+    "name": "Segun Ajayi",
+    "team": "Lagos Lions",
+    "file": "player-008.svg"
+  },
+  {
+    "id": "player-009",
+    "name": "Biodun Fatai",
+    "team": "Lagos Lions",
+    "file": "player-009.svg"
+  },
+  {
+    "id": "player-010",
+    "name": "Chinedu Okoye",
+    "team": "Lagos Lions",
+    "file": "player-010.svg"
+  },
+  {
+    "id": "player-011",
+    "name": "Rasheed Ibrahim",
+    "team": "Lagos Lions",
+    "file": "player-011.svg"
+  },
+  {
+    "id": "player-012",
+    "name": "Gbolahan Salami",
+    "team": "Lagos Lions",
+    "file": "player-012.svg"
+  },
+  {
+    "id": "player-013",
+    "name": "Kwame Asante",
+    "team": "Accra Panthers",
+    "file": "player-013.svg"
+  },
+  {
+    "id": "player-014",
+    "name": "Kofi Mensah",
+    "team": "Accra Panthers",
+    "file": "player-014.svg"
+  },
+  {
+    "id": "player-015",
+    "name": "Emmanuel Boateng",
+    "team": "Accra Panthers",
+    "file": "player-015.svg"
+  },
+  {
+    "id": "player-016",
+    "name": "Isaac Owusu",
+    "team": "Accra Panthers",
+    "file": "player-016.svg"
+  },
+  {
+    "id": "player-017",
+    "name": "Richmond Akwasi",
+    "team": "Accra Panthers",
+    "file": "player-017.svg"
+  },
+  {
+    "id": "player-018",
+    "name": "Joseph Amoah",
+    "team": "Accra Panthers",
+    "file": "player-018.svg"
+  },
+  {
+    "id": "player-019",
+    "name": "Daniel Appiah",
+    "team": "Accra Panthers",
+    "file": "player-019.svg"
+  },
+  {
+    "id": "player-020",
+    "name": "Samuel Osei",
+    "team": "Accra Panthers",
+    "file": "player-020.svg"
+  },
+  {
+    "id": "player-021",
+    "name": "Francis Gyamfi",
+    "team": "Accra Panthers",
+    "file": "player-021.svg"
+  },
+  {
+    "id": "player-022",
+    "name": "Prince Acheampong",
+    "team": "Accra Panthers",
+    "file": "player-022.svg"
+  },
+  {
+    "id": "player-023",
+    "name": "Michael Darko",
+    "team": "Accra Panthers",
+    "file": "player-023.svg"
+  },
+  {
+    "id": "player-024",
+    "name": "Stephen Adjei",
+    "team": "Accra Panthers",
+    "file": "player-024.svg"
+  },
+  {
+    "id": "player-025",
+    "name": "Mamadou Diallo",
+    "team": "Dakar Sharks",
+    "file": "player-025.svg"
+  },
+  {
+    "id": "player-026",
+    "name": "Ousmane Ba",
+    "team": "Dakar Sharks",
+    "file": "player-026.svg"
+  },
+  {
+    "id": "player-027",
+    "name": "Cheikh Fall",
+    "team": "Dakar Sharks",
+    "file": "player-027.svg"
+  },
+  {
+    "id": "player-028",
+    "name": "Ibrahima Sarr",
+    "team": "Dakar Sharks",
+    "file": "player-028.svg"
+  },
+  {
+    "id": "player-029",
+    "name": "Lamine Gueye",
+    "team": "Dakar Sharks",
+    "file": "player-029.svg"
+  },
+  {
+    "id": "player-030",
+    "name": "Pape Diop",
+    "team": "Dakar Sharks",
+    "file": "player-030.svg"
+  },
+  {
+    "id": "player-031",
+    "name": "Moussa Ndiaye",
+    "team": "Dakar Sharks",
+    "file": "player-031.svg"
+  },
+  {
+    "id": "player-032",
+    "name": "Alioune Thiam",
+    "team": "Dakar Sharks",
+    "file": "player-032.svg"
+  },
+  {
+    "id": "player-033",
+    "name": "Abdou Khadre",
+    "team": "Dakar Sharks",
+    "file": "player-033.svg"
+  },
+  {
+    "id": "player-034",
+    "name": "Saliou Ciss",
+    "team": "Dakar Sharks",
+    "file": "player-034.svg"
+  },
+  {
+    "id": "player-035",
+    "name": "Modou Diouf",
+    "team": "Dakar Sharks",
+    "file": "player-035.svg"
+  },
+  {
+    "id": "player-036",
+    "name": "Babacar Sylla",
+    "team": "Dakar Sharks",
+    "file": "player-036.svg"
+  },
+  {
+    "id": "player-037",
+    "name": "Yaya Tour\u00e9",
+    "team": "Abidjan Thunder",
+    "file": "player-037.svg"
+  },
+  {
+    "id": "player-038",
+    "name": "Didier Zakaria",
+    "team": "Abidjan Thunder",
+    "file": "player-038.svg"
+  },
+  {
+    "id": "player-039",
+    "name": "Souleymane Coulibaly",
+    "team": "Abidjan Thunder",
+    "file": "player-039.svg"
+  },
+  {
+    "id": "player-040",
+    "name": "Jean-Michel Drogba",
+    "team": "Abidjan Thunder",
+    "file": "player-040.svg"
+  },
+  {
+    "id": "player-041",
+    "name": "Aristide Banc\u00e9",
+    "team": "Abidjan Thunder",
+    "file": "player-041.svg"
+  },
+  {
+    "id": "player-042",
+    "name": "Abdoul Karim",
+    "team": "Abidjan Thunder",
+    "file": "player-042.svg"
+  },
+  {
+    "id": "player-043",
+    "name": "Koffi N'Guessan",
+    "team": "Abidjan Thunder",
+    "file": "player-043.svg"
+  },
+  {
+    "id": "player-044",
+    "name": "Gervais Yao",
+    "team": "Abidjan Thunder",
+    "file": "player-044.svg"
+  },
+  {
+    "id": "player-045",
+    "name": "Seydou Doumbia",
+    "team": "Abidjan Thunder",
+    "file": "player-045.svg"
+  },
+  {
+    "id": "player-046",
+    "name": "Mohamed Kone",
+    "team": "Abidjan Thunder",
+    "file": "player-046.svg"
+  },
+  {
+    "id": "player-047",
+    "name": "Ibrahim Sangar\u00e9",
+    "team": "Abidjan Thunder",
+    "file": "player-047.svg"
+  },
+  {
+    "id": "player-048",
+    "name": "Wilfried Bony",
+    "team": "Abidjan Thunder",
+    "file": "player-048.svg"
+  },
+  {
+    "id": "player-049",
+    "name": "Sekou Traore",
+    "team": "Bamako Warriors",
+    "file": "player-049.svg"
+  },
+  {
+    "id": "player-050",
+    "name": "Amadou Haidara",
+    "team": "Bamako Warriors",
+    "file": "player-050.svg"
+  },
+  {
+    "id": "player-051",
+    "name": "Bakary Kone",
+    "team": "Bamako Warriors",
+    "file": "player-051.svg"
+  },
+  {
+    "id": "player-052",
+    "name": "Moussa Sissoko",
+    "team": "Bamako Warriors",
+    "file": "player-052.svg"
+  },
+  {
+    "id": "player-053",
+    "name": "Fousseni Diabate",
+    "team": "Bamako Warriors",
+    "file": "player-053.svg"
+  },
+  {
+    "id": "player-054",
+    "name": "Kalifa Coulibaly",
+    "team": "Bamako Warriors",
+    "file": "player-054.svg"
+  },
+  {
+    "id": "player-055",
+    "name": "Adama Niane",
+    "team": "Bamako Warriors",
+    "file": "player-055.svg"
+  },
+  {
+    "id": "player-056",
+    "name": "Youssouf Camara",
+    "team": "Bamako Warriors",
+    "file": "player-056.svg"
+  },
+  {
+    "id": "player-057",
+    "name": "Hamidou Maiga",
+    "team": "Bamako Warriors",
+    "file": "player-057.svg"
+  },
+  {
+    "id": "player-058",
+    "name": "Boubacar Sangare",
+    "team": "Bamako Warriors",
+    "file": "player-058.svg"
+  },
+  {
+    "id": "player-059",
+    "name": "Abdoulaye Keita",
+    "team": "Bamako Warriors",
+    "file": "player-059.svg"
+  },
+  {
+    "id": "player-060",
+    "name": "Mamadou Doumbia",
+    "team": "Bamako Warriors",
+    "file": "player-060.svg"
+  },
+  {
+    "id": "player-061",
+    "name": "Romuald Boco",
+    "team": "Cotonou Titans",
+    "file": "player-061.svg"
+  },
+  {
+    "id": "player-062",
+    "name": "Desire Segbe",
+    "team": "Cotonou Titans",
+    "file": "player-062.svg"
+  },
+  {
+    "id": "player-063",
+    "name": "Stephane Sessegnon",
+    "team": "Cotonou Titans",
+    "file": "player-063.svg"
+  },
+  {
+    "id": "player-064",
+    "name": "Razak Omotoyossi",
+    "team": "Cotonou Titans",
+    "file": "player-064.svg"
+  },
+  {
+    "id": "player-065",
+    "name": "Moise Adilehou",
+    "team": "Cotonou Titans",
+    "file": "player-065.svg"
+  },
+  {
+    "id": "player-066",
+    "name": "Fabrice Akpo",
+    "team": "Cotonou Titans",
+    "file": "player-066.svg"
+  },
+  {
+    "id": "player-067",
+    "name": "Jodel Dossou",
+    "team": "Cotonou Titans",
+    "file": "player-067.svg"
+  },
+  {
+    "id": "player-068",
+    "name": "Alain Gnahore",
+    "team": "Cotonou Titans",
+    "file": "player-068.svg"
+  },
+  {
+    "id": "player-069",
+    "name": "Mickael Pote",
+    "team": "Cotonou Titans",
+    "file": "player-069.svg"
+  },
+  {
+    "id": "player-070",
+    "name": "Saturnin Allagbe",
+    "team": "Cotonou Titans",
+    "file": "player-070.svg"
+  },
+  {
+    "id": "player-071",
+    "name": "Junior Salomon",
+    "team": "Cotonou Titans",
+    "file": "player-071.svg"
+  },
+  {
+    "id": "player-072",
+    "name": "David Kiki",
+    "team": "Cotonou Titans",
+    "file": "player-072.svg"
+  },
+  {
+    "id": "player-073",
+    "name": "Aristide Bance",
+    "team": "Ouagadougou Eagles",
+    "file": "player-073.svg"
+  },
+  {
+    "id": "player-074",
+    "name": "Bertrand Traore",
+    "team": "Ouagadougou Eagles",
+    "file": "player-074.svg"
+  },
+  {
+    "id": "player-075",
+    "name": "Mohamed Konate",
+    "team": "Ouagadougou Eagles",
+    "file": "player-075.svg"
+  },
+  {
+    "id": "player-076",
+    "name": "Prejuce Nakoulma",
+    "team": "Ouagadougou Eagles",
+    "file": "player-076.svg"
+  },
+  {
+    "id": "player-077",
+    "name": "Alain Traore",
+    "team": "Ouagadougou Eagles",
+    "file": "player-077.svg"
+  },
+  {
+    "id": "player-078",
+    "name": "Issoufou Dayo",
+    "team": "Ouagadougou Eagles",
+    "file": "player-078.svg"
+  },
+  {
+    "id": "player-079",
+    "name": "Yacouba Sylla",
+    "team": "Ouagadougou Eagles",
+    "file": "player-079.svg"
+  },
+  {
+    "id": "player-080",
+    "name": "Abdoul Tapsoba",
+    "team": "Ouagadougou Eagles",
+    "file": "player-080.svg"
+  },
+  {
+    "id": "player-081",
+    "name": "Sadat Karantao",
+    "team": "Ouagadougou Eagles",
+    "file": "player-081.svg"
+  },
+  {
+    "id": "player-082",
+    "name": "Mamadou Sampaio",
+    "team": "Ouagadougou Eagles",
+    "file": "player-082.svg"
+  },
+  {
+    "id": "player-083",
+    "name": "Steeve Yago",
+    "team": "Ouagadougou Eagles",
+    "file": "player-083.svg"
+  },
+  {
+    "id": "player-084",
+    "name": "Razack Traore",
+    "team": "Ouagadougou Eagles",
+    "file": "player-084.svg"
+  },
+  {
+    "id": "player-085",
+    "name": "Emmanuel Adebayor",
+    "team": "Lom\u00e9 Storm",
+    "file": "player-085.svg"
+  },
+  {
+    "id": "player-086",
+    "name": "Floyd Ayite",
+    "team": "Lom\u00e9 Storm",
+    "file": "player-086.svg"
+  },
+  {
+    "id": "player-087",
+    "name": "Serge Akakpo",
+    "team": "Lom\u00e9 Storm",
+    "file": "player-087.svg"
+  },
+  {
+    "id": "player-088",
+    "name": "Mathieu Dossevi",
+    "team": "Lom\u00e9 Storm",
+    "file": "player-088.svg"
+  },
+  {
+    "id": "player-089",
+    "name": "Komlan Amewou",
+    "team": "Lom\u00e9 Storm",
+    "file": "player-089.svg"
+  },
+  {
+    "id": "player-090",
+    "name": "Ihlas Bebou",
+    "team": "Lom\u00e9 Storm",
+    "file": "player-090.svg"
+  },
+  {
+    "id": "player-091",
+    "name": "Kodjo Fo-Doh",
+    "team": "Lom\u00e9 Storm",
+    "file": "player-091.svg"
+  },
+  {
+    "id": "player-092",
+    "name": "Koffi Djidji",
+    "team": "Lom\u00e9 Storm",
+    "file": "player-092.svg"
+  },
+  {
+    "id": "player-093",
+    "name": "Alaixys Romao",
+    "team": "Lom\u00e9 Storm",
+    "file": "player-093.svg"
+  },
+  {
+    "id": "player-094",
+    "name": "Abdoul-Gafar Mamah",
+    "team": "Lom\u00e9 Storm",
+    "file": "player-094.svg"
+  },
+  {
+    "id": "player-095",
+    "name": "Richard Nane",
+    "team": "Lom\u00e9 Storm",
+    "file": "player-095.svg"
+  },
+  {
+    "id": "player-096",
+    "name": "Salifou Diarrassouba",
+    "team": "Lom\u00e9 Storm",
+    "file": "player-096.svg"
+  }
+]
